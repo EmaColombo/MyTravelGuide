@@ -1,0 +1,7 @@
+E:\MyTravelGuide\ViewModels\obj\Debug\ViewModels.csprojResolveAssemblyReference.cache
+E:\MyTravelGuide\ViewModels\bin\Debug\ViewModels.dll
+E:\MyTravelGuide\ViewModels\bin\Debug\ViewModels.pdb
+E:\MyTravelGuide\ViewModels\bin\Debug\WebMatrix.Data.dll
+E:\MyTravelGuide\ViewModels\bin\Debug\WebMatrix.Data.xml
+E:\MyTravelGuide\ViewModels\obj\Debug\ViewModels.dll
+E:\MyTravelGuide\ViewModels\obj\Debug\ViewModels.pdb
