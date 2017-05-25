@@ -1,0 +1,13 @@
+E:\GitHub\MyTravelGuide\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Servicios.dll.config
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Servicios.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Servicios.pdb
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\EntityFramework.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\EntityFramework.SqlServer.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\RepositorioClases.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\RepositorioClases.pdb
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\RepositorioClases.dll.config
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\EntityFramework.xml
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\EntityFramework.SqlServer.xml
+E:\GitHub\MyTravelGuide\Servicios\obj\Debug\Servicios.dll
+E:\GitHub\MyTravelGuide\Servicios\obj\Debug\Servicios.pdb

@@ -1,0 +1,24 @@
+﻿@model ViewModels.ChangesModel
+@{
+    ViewBag.Title = "VerifyAccount";
+}
+
+@if (Model.Success)
+{
+    <div class="card">
+        <div class="card-content">
+            <div class="card-title center-align">Gracias por verificar su cuenta</div>
+        </div>
+        <div class="card-action center-align">
+            <a href="~/Home/Login" class="green-text">Iniciar sesión</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-content">
+            <div class="card-title center-align">Hubo un error al verificar su cuenta, reintentelo nuevamente.</div>
+        </div>
+    </div>
+}
