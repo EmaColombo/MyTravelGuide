@@ -167,7 +167,7 @@ namespace GlobalEvents.Controllers
         //
         // GET: /User/Delete/5
         // Solo va a poder eliminar un administrador
-        [MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "Administrador")]
         public ActionResult Delete(int id)
         {
             Users user = UserService.Get(id).Select(u => new Users()
