@@ -1,0 +1,6 @@
+User-Agent: *
+Disallow: 
+Disallow: /Users
+Disallow: /Events/Listado
+Disallow: /Comments/Listado
+Disallow: /Manage

@@ -1,0 +1,125 @@
+﻿@model IEnumerable<ViewModels.ListUserViewModel>
+
+@{
+    ViewBag.Title = "Listado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<div class="card">
+    <div class="card-title center-align">Usuarios activos</div>
+    <div class="card-content">
+        <table class="table striped">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Apellido)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model.Where(z => z.Estado == RepositorioClases.UserState.Activo))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+    @if (Model.Where(z => z.Estado != RepositorioClases.UserState.Activo).Count() != 0)
+    {
+        <div class="card">
+            <div class="card-title center-align red-text">Usuarios no activos</div>
+            <div class="card-content">
+                <table class="table striped ">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Apellido)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Estado)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    @foreach (var item in Model.Where(z => z.Estado != RepositorioClases.UserState.Activo))
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Apellido)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    }

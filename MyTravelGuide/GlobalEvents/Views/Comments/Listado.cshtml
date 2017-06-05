@@ -1,0 +1,67 @@
+﻿@model List<RepositorioClases.Comments>
+@{
+    ViewBag.Title = "Listado";
+}
+
+<br />
+<br />
+
+<div class="card">
+    <div class="card-content">
+        <table class="table striped">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Comentario
+                    </th>
+                    <th>
+                        Usuario
+                    </th>
+                    <th>
+                        Evento
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CommentId)
+                    </td>
+                    <td>
+                        @if (@Html.DisplayFor(modelItem => item.Comentario).ToString().Length > 20)
+                        {
+                            @Html.DisplayFor(modelItem => item.Comentario).ToString().Substring(0, 20)
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.Comentario)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.iDUsuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EventId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalles", "Details", new { id = item.CommentId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+</div>

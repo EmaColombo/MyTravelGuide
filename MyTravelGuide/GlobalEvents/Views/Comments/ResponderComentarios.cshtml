@@ -1,0 +1,48 @@
+﻿@model ViewModels.CommentsModel
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="input-field col s12">
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1">Comentario</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal').modal();
+        });
+    </script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+@using (Html.BeginForm("ResponderComentarios", "Comments", FormMethod.Post, new { id = "commentFatherId" }))
+{
+
+    @Html.HiddenFor(x => x.IdEvento)
+    @Html.HiddenFor(x=> x.IdComment)
+    <div class="row">
+        <div class="input-field col s10 materialize-textarea">
+            <i class="material-icons prefix" id="Comentario">chat_bubble</i>
+            @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.Comment)
+            @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+        </div>
+        <div class="input-field col s2">
+            <input type="submit" value="Enviar" class="btn btn-primary" />
+        </div>
+    </div>
+
+}
+
+
+

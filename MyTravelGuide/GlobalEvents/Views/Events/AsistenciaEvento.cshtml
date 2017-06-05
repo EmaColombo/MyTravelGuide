@@ -1,0 +1,41 @@
+﻿@model ViewModels.InteresesEventosModel
+
+@using (Html.BeginForm("EnviarInteres", "Events", FormMethod.Post, new { id = "commentForm" }))
+{
+    <div class="row">
+        <div class="col s7 m7"></div>
+            <div class="col s5 m5 right-align">
+                @if (Model.FechaFin > DateTime.Now)
+                {
+                    if (Model.InteresUsuario.Tipo != RepositorioClases.Intereses.Asistire)
+                    {
+                        if (Model.InteresUsuario.IdInteres == 0 || Model.InteresUsuario.IdInteres > 0 && Model.InteresUsuario.Tipo == RepositorioClases.Intereses.Asistire)
+                        {
+                            <a class="waves-effect waves-light btn blue" onclick="EnviarAsistencia(@Model.IdEvento, 2)"><i class="material-icons left">thumb_up</i>Me Interesa</a>
+                        }
+                        if (Model.InteresUsuario.IdInteres > 0 && Model.InteresUsuario.Tipo == RepositorioClases.Intereses.Me_Gusta)
+                        {
+                            <a class="waves-effect waves-light btn blue" onclick="EnviarAsistencia(@Model.IdEvento, 2)"><i class="material-icons left">thumb_down</i>No me Interesa</a>
+                        }
+                    }
+                }
+
+                @if (Model.FechaFin > DateTime.Now)
+                {
+                    if (Model.InteresUsuario.IdInteres == 0 || Model.InteresUsuario.IdInteres > 0 && Model.InteresUsuario.Tipo == RepositorioClases.Intereses.Me_Gusta)
+                    {
+                        <a class="waves-effect waves-light btn blue" onclick="EnviarAsistencia(@Model.IdEvento, 1)"><i class="material-icons left">done</i>Asistiré</a>
+                    }
+                    if (Model.InteresUsuario.IdInteres > 0 && Model.InteresUsuario.Tipo == RepositorioClases.Intereses.Asistire)
+                    {
+                        <a class="waves-effect waves-light btn blue" onclick="EnviarAsistencia(@Model.IdEvento, 1)"><i class="material-icons left">done</i>No Asistiré</a>
+                    }
+                }
+                <h6 id="CantAsistencias"> Le Interesa: @Model.Interesados</h6>
+
+                <h6 id="CantAsistencias"> Asistirán: @Model.Asistencias</h6>
+            </div>
+        </div>
+
+}
+

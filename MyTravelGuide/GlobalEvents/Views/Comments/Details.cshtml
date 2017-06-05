@@ -1,0 +1,121 @@
+﻿@model ViewModels.Comments
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<div class="card">
+        <div class="card-content">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.CommentId)
+                </label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        @Html.DisplayFor(model => model.CommentId)
+                    </p>
+                </div>
+
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.Comentario)
+                </label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        @Html.DisplayFor(model => model.Comentario)
+                    </p>
+                </div>
+
+                @if (Model.ComentarioPadre != null)
+                {
+                    <label class="col-sm-2 col-form-label">
+                        @Html.DisplayNameFor(model => model.ComentarioPadre)
+                    </label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">
+                            @Html.DisplayFor(model => model.ComentarioPadre)
+                        </p>
+                    </div>
+                }
+
+                @if (Model.FechaUltimaActualizacion != null)
+                {
+                    <label class="col-sm-2 col-form-label">
+                        @Html.DisplayNameFor(model => model.FechaUltimaActualizacion)
+                    </label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">
+                            @Html.DisplayFor(model => model.FechaUltimaActualizacion)
+                        </p>
+                    </div>
+                }
+
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        @Html.DisplayFor(model => model.Fecha)
+                    </p>
+                </div>
+
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.EventId)
+                </label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        @Html.DisplayFor(model => model.EventId)
+                    </p>
+                </div>
+
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        @Html.DisplayFor(model => model.Fecha)
+                    </p>
+                </div>
+
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.iDUsuario)
+                </label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        @Html.DisplayFor(model => model.iDUsuario)
+                    </p>
+                </div>
+
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.Like)
+                </label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        @Html.DisplayFor(model => model.Like)
+                    </p>
+                </div>
+
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.UnLike)
+                </label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        @Html.DisplayFor(model => model.UnLike)
+                    </p>
+                </div>
+                <br />
+                <div>
+                    @Html.ActionLink("Volver", "Listado")
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large green" href="~/Comments/Edit/@Model.CommentId">
+        <i class="large material-icons">mode_edit</i>
+    </a>
+</div>

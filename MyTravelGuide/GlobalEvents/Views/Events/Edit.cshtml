@@ -1,0 +1,178 @@
+﻿@model RepositorioClases.Events
+
+@{
+    ViewBag.Title = "Editar Evento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<div class="card">
+    <div class="card-content">
+        @using (Html.BeginForm("Edit", "Events", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <br />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="input-field col-md-12 s12">
+                    <i class="material-icons prefix">label</i>
+                    @Html.EditorFor(model => model.NombreEvento, new { htmlAttributes = new { @class = "form-control", @data_length = "200" } })
+                    @Html.LabelFor(model => model.NombreEvento, new { @data_error = "Error", @data_success = "" })
+                    @Html.ValidationMessageFor(model => model.NombreEvento, "", new { @class = "validate" })
+                </div>
+
+                <div class="input-field col-md-12 s12">
+                    @Html.TextAreaFor(model => model.Descripcion, new { @class = "materialize-textarea", @data_length = "500" })
+                    @Html.LabelFor(model => model.Descripcion)
+                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "validate" })
+                </div>
+
+                <div class="input-field col-md-12 s12">
+                    <i class="material-icons prefix">location_on</i>
+                    @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control", @data_length = "200" } })
+                    @Html.LabelFor(model => model.Direccion)
+                    @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "active" })
+                        @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "datepicker" } })
+                        @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-field col s6">
+                        <input class="text-box single-line col-2" id="HoraInicio" name="HoraInicio" type="time" value="@Model.HoraInicio" />
+                        <label for="last_name" class="active">Hora inicio</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.LabelFor(model => model.FechaFin, htmlAttributes: new { @class = "active" })
+                        @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "datepicker" } })
+                        @Html.ValidationMessageFor(model => model.FechaFin, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-field col s6">
+                        <input class="text-box single-line col-2" id="HoraFin" name="HoraFin" type="time" value="@Model.HoraFin" />
+                        <label for="last_name" class="active">Hora fin</label>
+                    </div>
+                </div>
+
+                @Html.EnumDropDownListFor(model => model.IdCategoria, null, new { @class = "form-control" })
+
+                <script>
+$(document).ready(function () {
+    $('select').material_select();
+});</script>
+
+                <div class="form-group">
+                    @Html.CheckBoxFor(m => m.Destacado, new { @type = "checkbox", @id = "Destacado", @name = "Destacado" })
+                    <label for="Destacado">Evento destacado</label>
+                </div>
+
+                <!--Script para los checkbox-->
+                <script>
+                    $(document).ready(function () {
+                        $('input[type=checkbox]').each(function () {
+                            if (this.nextSibling.nodeName != 'label') {
+                                $(this).after('<label for="' + this.id + '"></label>')
+                            }
+                        })
+                    })</script>
+                <!--Script para los datepicker-->
+                <script>
+                    $('.datepicker').pickadate({
+                        selectMonths: true, // Creates a dropdown to control month
+                        selectYears: 15 // Creates a dropdown of 15 years to control year
+                    });</script>
+
+                <blockquote>Arrastre el marcador hacia la ubicación del evento</blockquote>
+
+                @* ------------------------------------------------------------------------------------------------------------ *@
+
+
+                <div id="map" style="width:100%;height:600px;"></div>
+
+                <script>
+                    // Note: This example requires that you consent to location sharing when
+                    // prompted by your browser. If you see the error "The Geolocation service
+                    // failed.", it means you probably did not give permission for the browser to
+                    // locate you.
+
+                    function initMap() {
+
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            center: { lat: $('#lat').val(), lng: $('#lng').val() },
+                            zoom: 14
+                        });
+
+                        var infoWindow = new google.maps.InfoWindow({ map: map });
+
+
+                        var myMarker = new google.maps.Marker({
+                            position: new google.maps.LatLng($('#lat').val(), $('#lng').val()),
+                            draggable: true
+                        });
+
+
+                        map.setCenter(myMarker.position);
+                        myMarker.setMap(map);
+
+                        //--------------------------------------------------------------------
+                        google.maps.event.addListener(myMarker, 'dragend', function (evt) {
+                            $('#lat').val(evt.latLng.lat().toFixed(3));
+                            $('#lng').val(evt.latLng.lng().toFixed(3));
+                        });
+
+                        google.maps.event.addListener(myMarker, 'dragstart', function (evt) {
+                            document.getElementById('lat').innerHTML = 'Currently dragging marker...';
+                        });
+
+                        //-----------------------------------------------------------------------
+                    }
+
+                </script>
+
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPHbsGCp8vpDA1vMKAFWsU0Odc8Mz5SAA&callback=initMap" async defer></script>
+
+
+                @* ------------------------------------------------------------------------------------------------------------------------------------------------------ *@
+
+
+                <div class="md-form col-md-2">
+                    @Html.EditorFor(model => model.lat, new { htmlAttributes = new { @class = "form-control", @id = "lat", @readonly = "readonly", @hidden = true } })
+                    @Html.ValidationMessageFor(model => model.lat, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="md-form col-md-2">
+                    @Html.EditorFor(model => model.lng, new { htmlAttributes = new { @class = "form-control", @id = "lng", @readonly = "readonly", @hidden = true } })
+                    @Html.ValidationMessageFor(model => model.lng, "", new { @class = "text-danger" })
+                </div>
+
+                <img src="@Model.RutaImagen" class="mx-auto d-block" alt="" />
+
+                <br />
+                <br />
+
+                <label for="file">Modificar imagen:</label>
+                <input type="file" name="file" id="file" /><br><br>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Editar Evento" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+        <div>
+            @Html.ActionLink("Volver", "Index")
+        </div>
+        </div>
+</div>

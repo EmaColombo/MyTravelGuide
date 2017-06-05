@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C6DD01E0-10C1-49E7-B7EA-90A8C2E3E70D}</ProjectGuid>
+    <ProjectGuid>{3A4EC6DA-E48F-4F37-9CD1-96A22ABEE68B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Servicios</RootNamespace>
@@ -30,15 +30,66 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aether, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aether.8.2.0\lib\net45\Aether.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Chiron, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chiron.6.2.1\lib\net40\Chiron.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CloudinaryDotNet, Version=1.0.30.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloudinaryDotNet.1.0.30\lib\net40\CloudinaryDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FParsec, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40ccfc0a09edbb5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\FParsec.1.0.2\lib\net40-client\FParsec.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FParsecCS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40ccfc0a09edbb5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\FParsec.1.0.2\lib\net40-client\FParsecCS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.4.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FSharp.Core.4.1.12\lib\net45\FSharp.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hopac, Version=0.3.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hopac.0.3.23\lib\net45\Hopac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hopac.Core, Version=0.3.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hopac.0.3.23\lib\net45\Hopac.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hopac.Platform, Version=0.3.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hopac.0.3.23\lib\net45\Hopac.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HttpFs, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Http.fs.4.1.0\lib\net40\HttpFs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NodaTime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodaTime.2.0.0\lib\net45\NodaTime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,17 +99,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentsService.cs" />
+    <Compile Include="EventsService.cs" />
     <Compile Include="General.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportServices.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RepositorioClases\RepositorioClases.csproj">
-      <Project>{c22d54d1-face-48ca-88f4-c40575757752}</Project>
+      <Project>{CF5B8CF4-526A-41F5-B964-82CE44E4C62D}</Project>
       <Name>RepositorioClases</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="any\netstandard1.6\FSharp.Core.optdata" />
+    <None Include="any\netstandard1.6\FSharp.Core.sigdata" />
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

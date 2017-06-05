@@ -1,0 +1,152 @@
+﻿@model ViewModels.ListUserViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s2 m2 l2 center-align">
+                <i class="material-icons font-size: large">perm_identity</i>
+            </div>
+            <div class="col s10 m10 l10">
+                @if (Model.Name != null)
+                {
+                    <div class="card-title left-align">@Model.Name @Model.Apellido</div>
+                }
+                <div class="form-group">
+                    @if (Model.Id == WebSecurity.CurrentUserId)
+                    {
+                        <div class="row">
+                            <div class="col s6 m6 l6">
+                                <label>@Html.DisplayNameFor(model => model.Usuario)</label>
+                                <div>@Html.DisplayFor(model => model.Usuario)</div>
+                                <label>@Html.DisplayNameFor(model => model.Email)</label>
+                                <div>@Html.DisplayFor(model => model.Email)</div>
+                            </div>
+
+                            <div class="col s6 m6 l6">
+                                        <table class="striped centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <i class="fa fa-bullseye" aria-hidden="true"></i>
+                                                    </th>
+                                                    <th>
+                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    </th>
+                                                    <th>
+                                                        <i class="fa fa-comment" aria-hidden="true"></i>
+                                                    </th>
+                                                    <th>
+                                                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                                    </th>
+                                                    <th>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tr>
+                                                <td>
+                                                    @Model.Rank
+                                                </td>
+                                                <td>
+                                                    @Model.Eventos
+                                                </td>
+                                                <td>
+                                                    @Model.Comentarios
+                                                </td>
+                                                <td>
+                                                    @Model.EventosAsistidos
+                                                </td>
+                                                <td>
+                                                    @Model.ListaDeDeseos
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </div>
+                        </div>
+
+                        <div class="fixed-action-btn">
+                            <a class="btn-floating btn-large green" href="~/Users/Edit/@Model.Id">
+                                <i class="large material-icons">mode_edit</i>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            @if (!Model.Usuario.Contains("@"))
+                            {
+                                <div class="col s6 m6 l6">
+                                    <label>@Html.DisplayNameFor(model => model.Usuario)</label>
+                                    <div> @Html.DisplayFor(model => model.Usuario)</div>
+                                    <label>@Html.DisplayNameFor(model => model.Email)</label>
+                                    <div>@Html.DisplayFor(model => model.Email)</div>
+                                </div>
+                            }
+                            @if (Roles.IsUserInRole(WebSecurity.CurrentUserName, "Admin"))
+                            {
+                                <div class="col s6 m6 l6">
+                                            <table class="striped centered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <i class="fa fa-bullseye" aria-hidden="true"></i>
+                                                        </th>
+                                                        <th>
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                        </th>
+                                                        <th>
+                                                            <i class="fa fa-comment" aria-hidden="true"></i>
+                                                        </th>
+                                                        <th>
+                                                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                                        </th>
+                                                        <th>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tr>
+                                                    <td>
+                                                        @Model.Rank
+                                                    </td>
+                                                    <td>
+                                                        @Model.Eventos
+                                                    </td>
+                                                    <td>
+                                                        @Model.Comentarios
+                                                    </td>
+                                                    <td>
+                                                        @Model.EventosAsistidos
+                                                    </td>
+                                                    <td>
+                                                        @Model.ListaDeDeseos
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                </div>
+
+
+                                <div class="fixed-action-btn">
+                                    <a class="btn-floating btn-large green" href="~/Users/Edit/@Model.Id">
+                                        <i class="large material-icons">mode_edit</i>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    <a class="right-align black-text" href="~/Users/ReportarUsuario/@Model.Id">
+                        <i class="fa fa-flag-o"></i>
+                        Reportar
+                    </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

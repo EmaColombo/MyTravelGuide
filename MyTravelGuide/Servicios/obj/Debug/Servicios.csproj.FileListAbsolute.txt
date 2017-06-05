@@ -1,13 +1,74 @@
-E:\GitHub\MyTravelGuide\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Servicios.dll.config
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Servicios.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Servicios.pdb
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Aether.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Chiron.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\CloudinaryDotNet.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\EntityFramework.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\EntityFramework.SqlServer.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\FParsec.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\FParsecCS.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\FSharp.Core.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Hopac.Core.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Hopac.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Hopac.Platform.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\HttpFs.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Newtonsoft.Json.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\NodaTime.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\RepositorioClases.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\System.ValueTuple.dll
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\RepositorioClases.pdb
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\RepositorioClases.dll.config
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Aether.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Chiron.pdb
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Chiron.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\EntityFramework.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\EntityFramework.SqlServer.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\FParsec.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\FParsecCS.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\FSharp.Core.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Hopac.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Hopac.Core.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\HttpFs.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\Newtonsoft.Json.xml
+E:\Ing Web\GlobalEvents\Servicios\bin\Debug\NodaTime.xml
+E:\Ing Web\GlobalEvents\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
+E:\Ing Web\GlobalEvents\Servicios\obj\Debug\Servicios.dll
+E:\Ing Web\GlobalEvents\Servicios\obj\Debug\Servicios.pdb
 E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Servicios.dll.config
 E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Servicios.dll
 E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Servicios.pdb
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Aether.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Chiron.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\CloudinaryDotNet.dll
 E:\GitHub\MyTravelGuide\Servicios\bin\Debug\EntityFramework.dll
 E:\GitHub\MyTravelGuide\Servicios\bin\Debug\EntityFramework.SqlServer.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\FParsec.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\FParsecCS.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\FSharp.Core.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Hopac.Core.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Hopac.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Hopac.Platform.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\HttpFs.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Newtonsoft.Json.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\NodaTime.dll
 E:\GitHub\MyTravelGuide\Servicios\bin\Debug\RepositorioClases.dll
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\System.ValueTuple.dll
 E:\GitHub\MyTravelGuide\Servicios\bin\Debug\RepositorioClases.pdb
 E:\GitHub\MyTravelGuide\Servicios\bin\Debug\RepositorioClases.dll.config
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Aether.xml
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Chiron.pdb
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Chiron.xml
 E:\GitHub\MyTravelGuide\Servicios\bin\Debug\EntityFramework.xml
 E:\GitHub\MyTravelGuide\Servicios\bin\Debug\EntityFramework.SqlServer.xml
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\FParsec.xml
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\FParsecCS.xml
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\FSharp.Core.xml
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Hopac.xml
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Hopac.Core.xml
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\HttpFs.xml
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\Newtonsoft.Json.xml
+E:\GitHub\MyTravelGuide\Servicios\bin\Debug\NodaTime.xml
+E:\GitHub\MyTravelGuide\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
 E:\GitHub\MyTravelGuide\Servicios\obj\Debug\Servicios.dll
 E:\GitHub\MyTravelGuide\Servicios\obj\Debug\Servicios.pdb

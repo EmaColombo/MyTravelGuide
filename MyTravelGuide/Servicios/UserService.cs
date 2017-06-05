@@ -38,7 +38,7 @@ namespace Servicios
         /// </summary>
         /// <param name="id">Busca por id (opcional)</param>
         /// <returns>Lista de usuario/s</returns>
-        public static List<Users> Get(int? id)
+        public static List<Users> Get(long? id)
         {
             using (Modelo context = new Modelo())
             {
@@ -93,6 +93,41 @@ namespace Servicios
                     users.Estado = UserState.Eliminado;
 
                 // el objeto en memoria persiste los cambios en la base de datos cuando hago un save sobre el contexto.
+                context.SaveChanges();
+            }
+        }
+
+        public static bool CambiarEstadoUsuario(long UserId, UserState estado)
+        {
+            using (Modelo context = new Modelo())
+            {
+                Users usuario = context.Users.SingleOrDefault(c => c.Id == UserId);
+                usuario.Estado = estado;
+                context.SaveChanges();
+            }
+            return true;
+        }
+
+        public static List<UsersReportes> ObtenerUsuariosReportados()
+        {
+            using (Modelo context = new Modelo())
+            {
+                return context.UsersReportes.Where(z => z.Resuelto == false).ToList();
+            }
+        }
+
+        public static void ResolverReportesUsuarios(int idUsuario)
+        {
+            using (Modelo context = new Modelo())
+            {
+                List<UsersReportes> users = context.UsersReportes
+                    .Where(z => z.IdUsuario == idUsuario)
+                    .Where(z => z.Resuelto == false)
+                    .ToList();
+                foreach (var a in users)
+                {
+                    a.Resuelto = true;
+                }
                 context.SaveChanges();
             }
         }

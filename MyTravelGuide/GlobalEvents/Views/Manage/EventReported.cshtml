@@ -1,0 +1,120 @@
+﻿@model RepositorioClases.EventsDetailsReport
+@{
+    ViewBag.Title = "DetailsReported";
+}
+
+<br />
+<br />
+
+<div class="card">
+    <div class="card-content">
+        <div class="card-title">Evento reportado</div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">
+                @Html.DisplayNameFor(model => model.Eventos.NombreEvento)
+            </label>
+            <div class="col-sm-10">
+                <p class="form-control-static">
+                    @Html.DisplayFor(model => model.Eventos.NombreEvento)
+                </p>
+            </div>
+
+            <label class="col-sm-2 col-form-label">
+                @Html.DisplayNameFor(model => model.Eventos.Descripcion)
+            </label>
+            <div class="col-sm-10">
+                <p class="form-control-static">
+                    @Html.DisplayFor(model => model.Eventos.Descripcion)
+                </p>
+            </div>
+
+            @if (Model.Eventos.Direccion != null)
+            {
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.Eventos.Direccion)
+                </label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        @Html.DisplayFor(model => model.Eventos.Direccion)
+                    </p>
+                </div>
+            }
+
+            <label class="col-sm-2 col-form-label">
+                @Html.DisplayNameFor(model => model.Eventos.FechaInicio)
+            </label>
+            <div class="col-sm-10">
+                <p class="form-control-static">
+                    @Html.DisplayFor(model => model.Eventos.FechaFin)
+                </p>
+            </div>
+
+            <label class="col-sm-2 col-form-label">
+                @Html.DisplayNameFor(model => model.Eventos.HoraInicio)
+            </label>
+            <div class="col-sm-10">
+                <p class="form-control-static">
+                    @Html.DisplayFor(model => model.Eventos.HoraFin)
+                </p>
+            </div>
+
+            <label class="col-sm-2 col-form-label">
+                @Html.DisplayNameFor(model => model.Eventos.IdCategoria)
+            </label>
+            <div class="col-sm-10">
+                <p class="form-control-static">
+                    @Html.DisplayFor(model => model.Eventos.IdCategoria)
+                </p>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Eventos.Id)
+
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.Eventos.Estado)
+                </label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        @Html.DisplayFor(model => model.Eventos.Estado)
+                    </p>
+                </div>
+
+                <label class="col-sm-2 col-form-label">
+                    @Html.DisplayNameFor(model => model.Eventos.Estado)
+                </label>
+                @Html.EnumDropDownListFor(model => model.Eventos.Estado)
+
+                <script>
+                    $(document).ready(function () {
+                        $('select').material_select();
+                    });</script>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="input-field col s6">
+                                <input type="submit" value="Actualizar estado" class="btn btn-primary" />
+                            </div>
+                        </div>
+                        <div class="input-field col s6 right-align">
+                            <input type="button" value="Cerrar caso" class="btn btn-primary red" onclick="location.href='@Url.Action("CerrarReporteEventos", "Manage", new { @EventoId = Model.Eventos.Id })'" />
+                        </div>
+                    </div>
+            }
+        </div>
+        <div>
+            @Html.ActionLink("Volver", "Reportes")
+        </div>
+    </div>
+</div>
+
+@foreach (var a in Model.Reportes)
+{
+    <div class="card">
+        <div class="card-content red-text">
+            @a.Observacion
+            <p class="card-text black-text"><small class="text-muted">Creado por @Html.getNameUser(id: @a.IdUsuario.ToString())</small></p>
+        </div>
+    </div>
+}

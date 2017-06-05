@@ -1,0 +1,134 @@
+﻿@model RepositorioClases.Reportes
+@{
+    ViewBag.Title = "Reportes";
+}
+
+<br />
+<br />
+
+<div class="card">
+    <div class="card-content">
+        @if (Model.Eventos.Count > 0)
+        {
+            <table class="table striped centered">
+                <div class="card-title center-align">Eventos reportados</div>
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>
+                            Evento
+                        </th>
+                        <th>
+                            Reportes
+                        </th>
+
+                        <th>Revisar</th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model.Eventos.GroupBy(z => z.EventId).OrderByDescending(z => z.Count()))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Key)
+                        </td>
+                        <td>
+                            @item.Count()
+                        </td>
+                        <td>
+                            @Html.ActionLink("Revisar", "EventReported", "Manage", new { id = item.Key }, null)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+        else
+        {
+            <div class="card-title center-align">No hay eventos reportados</div>
+        }
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content">
+        @if (Model.Comentarios.Count > 0)
+        {
+            <table class="table striped centered">
+                <div class="card-title center-align">Comentarios reportados</div>
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>
+                            Comentario
+                        </th>
+                        <th>
+                            Reportes
+                        </th>
+
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model.Comentarios.GroupBy(z => z.CommentId).OrderByDescending(z => z.Count()))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Key)
+                        </td>
+                        <td>
+                            @item.Count()
+                        </td>
+                        <td>
+                            @Html.ActionLink("Revisar", "CommentReported", "Manage", new { id = item.Key }, null)
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <div class="card-title center-align">No hay comentarios reportados</div>
+        }
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content">
+        @if (Model.Usuarios.Count > 0)
+        {
+            <table class="table striped centered">
+                <div class="card-title center-align">Usuarios reportados</div>
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>
+                            Usuario
+                        </th>
+                        <th>
+                            Reportes
+                        </th>
+
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model.Usuarios.GroupBy(z => z.IdUsuario).OrderByDescending(z => z.Count()))
+                {
+                    <tr>
+                        <td>
+                            @Html.getNameUser(@Html.DisplayFor(modelItem => item.Key).ToString())
+                        </td>
+                        <td>
+                            @item.Count()
+                        </td>
+                        <td>
+                            @Html.ActionLink("Revisar", "UserReported", "Manage", new { id = item.Key }, null)
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <div class="card-title center-align">No hay usuarios reportados</div>
+        }
+    </div>
+</div>

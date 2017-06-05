@@ -34,6 +34,16 @@ namespace RepositorioClases
         [Required(ErrorMessage = "El campo Estado es obligatorio")]
         public UserState Estado { get; set; }
 
+        public bool? UserDestacado { get; set; }
+
+        [ForeignKey("IdUser")]
+        public virtual List<VotosUsersEvents> Votos { get; set; }
+
+        [ForeignKey("IdUsuario")]
+        public virtual List<CommentsReportes> Reportes { get; set; }
+
+        [ForeignKey("IdUsuario")]
+        public virtual List<EventsReportes> ReportesEv { get; set; }
     }
 
     [Table("webpages_Membership")]
@@ -119,5 +129,23 @@ namespace RepositorioClases
 
         [ForeignKey("RoleId")]
         public ICollection<UsersInRole> UsersInRoles { get; set; }
+    }
+
+    public partial class UsersReportes
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ReporteId { get; set; }
+
+        public long UserId { get; set; }
+
+        public int IdUsuario { get; set; }
+
+        [Required]
+        [StringLength(300)]
+        public string Observacion { get; set; }
+
+        public DateTime Fecha { get; set; }
+
+        public bool Resuelto { get; set; }
     }
 }

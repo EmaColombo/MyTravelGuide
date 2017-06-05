@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Mapa";
+}
+
+<br />
+<br />
+
+<h4>En el siguiente mapa usted encontrará los eventos en un radio de 2.5km desde su posición. 
+    Los mismos tienen hoy como fecha de inicio</h4>
+
+<div id="map" style="width:100%;height:600px;"></div>
+
+<script>
+    // Note: This example requires that you consent to location sharing when
+    // prompted by your browser. If you see the error "The Geolocation service
+    // failed.", it means you probably did not give permission for the browser to
+    // locate you.
+
+    function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -30.944932, lng: -61.562566 },
+            zoom: 14
+        });
+
+        var infoWindow = new google.maps.InfoWindow({ map: map });
+
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                    pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                position.lat = pos.lat;
+                position.lng = pos.lng;
+
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: 'Usted está aquí'
+                });
+                map.setCenter(pos);
+                showPosition(pos);
+            }, function () {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+
+        function showPosition(position) {
+            var data = [];
+            $.ajax({
+                url: "/Events/GetEventsForMap",
+                dataType: 'json',
+                async: true,
+                data: { 'lat': position.lat, 'lng': position.lng },
+                success: function (info) {
+                    info.forEach(function (x) {
+                        var marker = new google.maps.Marker({
+                            position: {
+                                lat: parseFloat(x.lat),
+                                lng: parseFloat(x.lng)
+                            },
+                            map: map,
+                            title: x.NombreEvento
+                        });
+                    });
+                }
+            });
+        }
+    }
+
+    
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+            'Error: The Geolocation service failed.' :
+            'Error: Your browser doesn\'t support geolocation.');
+    }
+
+
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPHbsGCp8vpDA1vMKAFWsU0Odc8Mz5SAA&callback=initMap" async defer></script>
+
+
+

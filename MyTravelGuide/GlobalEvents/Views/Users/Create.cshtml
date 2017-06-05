@@ -1,0 +1,46 @@
+﻿@model ViewModels.CreateUserModel
+
+@{
+    ViewBag.Title = "Crear usuario";
+}
+
+<br />
+
+<div class="card">
+    <div class="card-title center-align">Crear usuario</div>
+        @using (Html.BeginForm())
+        {
+            <div class="card-content">
+                <div class="input-field">
+                    <i class="material-icons prefix">mail</i>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @data_length = "250" } })
+                    @Html.LabelFor(model => model.Email, new { @data_error = "Error", @data_success = "" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validate" })
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">vpn_key</i>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @data_length = "50" } })
+                    @Html.LabelFor(model => model.Password, new { @data_error = "Error", @data_success = "" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "validate" })
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">vpn_key</i>
+                    @Html.EditorFor(model => model.repeatPassword, new { htmlAttributes = new { @class = "form-control", @data_length = "50" } })
+                    @Html.LabelFor(model => model.repeatPassword, new { @data_error = "Error", @data_success = "" })
+                    @Html.ValidationMessageFor(model => model.repeatPassword, "", new { @class = "validate" })
+                </div>
+            </div>
+        <div class="card-action center-align">
+            <input type="submit" value="Crear" class="btn btn-primary" />
+        </div>
+        }
+</div>
+
+@if (Roles.IsUserInRole(WebSecurity.CurrentUserName, "Admin"))
+{
+    <div>
+        @Html.ActionLink("Ir al listado", "Listado")
+    </div>
+}

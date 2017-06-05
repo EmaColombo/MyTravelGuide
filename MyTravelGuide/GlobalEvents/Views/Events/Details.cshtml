@@ -1,0 +1,327 @@
+﻿@model ViewModels.EventViewModel.EventModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<div class="card #00897b teal darken-1 hoverable">
+    @if (Model.ViewModel.RutaImagen != null)
+    {
+        <div class="card-image">
+            <img src="@Html.DisplayFor(modelItem => Model.ViewModel.RutaImagen)">
+        </div>
+    }
+    <div class="card-content white-text">
+
+        <div class="row">
+            <div class="col s12 m8 left-align">
+                <a href="~/Users/Details/@Model.ViewModel.IdUser">
+                    <div class="chip">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx-XTtpVFr21gRcxHk_D2ZoENOxFxtVFKVIe9Wpf61P93ERViS" alt="Contact Person">
+                        @Html.getNameUser(id: @Html.DisplayFor(modelItem => Model.ViewModel.IdUser).ToString())
+                    </div>
+                </a>
+            </div>
+            <div class="col s12 m4 right-align">
+                <span class="card-info card-event-detail-info"><i class="@Html.getIcon(@Html.DisplayFor(modelItem => Model.ViewModel.IdCategoria).ToString())"></i> @Html.DisplayFor(modelItem => Model.ViewModel.IdCategoria) </span>
+
+            </div>
+        </div>
+
+        <span class="card-title text-darken-4">@Html.DisplayFor(modelItem => Model.ViewModel.NombreEvento)</span>
+        <p class="card-subtitle text-darken-2">@Html.DisplayFor(modelItem => Model.ViewModel.Descripcion)</p>
+        <hr />
+
+        <!-- IdUser -->
+
+        <div class="row card-row">
+            <div class="col s12 m6">
+                @if (Model.ViewModel.FechaFin == Model.ViewModel.FechaInicio)
+                {
+                    <span class="card-info card-event-detail-info"><i class="fa fa-calendar-times-o"></i> @Html.DisplayFor(modelItem => Model.ViewModel.FechaInicio)</span>
+                }
+                else
+                {
+                    <span class="card-info card-event-detail-info"><i class="fa fa-calendar-times-o"></i> @Html.DisplayFor(modelItem => Model.ViewModel.FechaInicio) al @Html.DisplayFor(modelItem => Model.ViewModel.FechaFin)</span>
+                }
+
+            </div>
+            <div class="col s12 m6 right-align">
+                <span class="card-info card-event-detail-info">
+                    <i class="fa fa-clock-o"></i> @Html.DisplayFor(modelItem => Model.ViewModel.HoraInicio) - @Html.DisplayFor(modelItem => Model.ViewModel.HoraFin)
+                </span>
+            </div>
+        </div>
+
+        <div class="row card-row">
+            <div class="col s12 m6">
+                <span class="card-info card-event-detail-info"><i class="fa fa-address-card-o"></i> @Html.DisplayFor(modelItem => Model.ViewModel.Direccion)</span>
+            </div>
+            <!--<div class="col s12 m6">
+                <span class="card-info card-event-detail-info">12.00 €</span>
+            </div>-->
+        </div>
+        <hr />
+
+        <div id="map" style="width:100%;height:300px;"></div>
+        <hr />
+
+
+        <div class="row">
+            <div class="col s3 m3 left-align">
+                @if (Model.ViewModel.FechaFin < DateTime.Now)
+                {
+                    if (Model.Puntuacion > 0)
+                    {
+                        <h5>Usted ha puntuado este evento con @Model.Puntuacion estrellas</h5>
+                    }
+                    else
+                    {
+                        <fieldset class="rating">
+                            <legend>¿Qué le pareció el evento?</legend>
+                            <input type="radio" id="star5" name="rating" onclick="EnviarPuntuacion(@Model.ViewModel.Id, 5)" /><label for="star5" title="Increíble!"></label>
+                            <input type="radio" id="star4" name="rating" onclick="EnviarPuntuacion(@Model.ViewModel.Id, 4)" /><label for="star4" title="Muy bueno"></label>
+                            <input type="radio" id="star3" name="rating" onclick="EnviarPuntuacion(@Model.ViewModel.Id, 3)" /><label for="star3" title="Bueno"></label>
+                            <input type="radio" id="star2" name="rating" onclick="EnviarPuntuacion(@Model.ViewModel.Id, 2)" /><label for="star2" title="Regular"></label>
+                            <input type="radio" id="star1" name="rating" onclick="EnviarPuntuacion(@Model.ViewModel.Id, 1)" /><label for="star1" title="Una pérdida de tiempo"></label>
+                        </fieldset>
+                    }
+                }
+            </div>
+
+        @if (Model.ViewModel.FechaFin < DateTime.Now)
+        {
+            <div class="col s4 m4">
+                <div class="card-panel teal">
+                   
+                        <span>
+                            @for (int i = 1; i <= Math.Round(Model.Promedio, 0, MidpointRounding.AwayFromZero); i++)
+                            {
+                                <img class="manImg" src="~/Content/star.png" width="40px" height="40px">
+                            }
+                            <h5>Puntuación: @Model.Promedio</h5>
+                        </span>
+                    
+
+
+                </div>
+            </div>
+        }
+
+
+        </div>
+
+        <div id="AsistenciasDiv">
+            @Html.Action("AsistenciaEvento", "Events", new { IDEvento = Model.ViewModel.Id })
+        </div>
+           
+        <br />
+
+            <a class="right-align white-text" href="~/Events/ReportarEvento/@Model.ViewModel.Id">
+                <i class="fa fa-flag-o"></i>
+                Reportar
+            </a>
+        </div>
+        </div>
+
+
+
+
+        @*<!-- Modal Trigger -->
+            <a class="waves-effect waves-light btn" href="#modal1">Comentar</a>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Comentario</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                </div>
+            </div>
+
+            <script>
+                $(document).ready(function(){
+                    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                    $('.modal').modal();
+                });
+            </script>
+
+            @*
+                @foreach (var a in Model.Comments)
+                {
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <p>
+                                        @a.Comentario
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }*@
+
+        <div id="comentariosDiv">
+            @Html.Action("GetEventCommets", "Events", new { IdEvento = Model.ViewModel.Id })
+        </div>
+
+
+        <!--Hay que ver que sea el usuario que lo creo o algún administrador-->
+        @if (WebSecurity.IsAuthenticated)
+        {
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large green" href="~/Events/Edit/@Model.ViewModel.Id">
+                    <i class="large material-icons">mode_edit</i>
+                </a>
+            </div>
+        }
+
+
+        @* ------------------------------------------------------------------------------------------------------------ *@
+
+
+
+
+        <script>
+    // Note: This example requires that you consent to location sharing when
+    // prompted by your browser. If you see the error "The Geolocation service
+    // failed.", it means you probably did not give permission for the browser to
+    // locate you.
+
+    function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat:@Model.ViewModel.lat, lng: @Model.ViewModel.lng },
+            zoom: 15
+        });
+
+        var infoWindow = new google.maps.InfoWindow({ map: map });
+
+
+        var myMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(@Model.ViewModel.lat, @Model.ViewModel.lng),
+            draggable: false
+        });
+
+
+        map.setCenter(myMarker.position);
+        myMarker.setMap(map);
+
+        //--------------------------------------------------------------------
+        google.maps.event.addListener(myMarker, 'dragend', function (evt) {
+            $('#lat').val(evt.latLng.lat().toFixed(3));
+            $('#lng').val(evt.latLng.lng().toFixed(3));
+        });
+
+        google.maps.event.addListener(myMarker, 'dragstart', function (evt) {
+            document.getElementById('lat').innerHTML = 'Currently dragging marker...';
+        });
+
+        //-----------------------------------------------------------------------
+    }
+
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPHbsGCp8vpDA1vMKAFWsU0Odc8Mz5SAA&callback=initMap" async defer></script>
+
+
+
+
+        @* ------------------------------------------------------------------------------------------------------------------------------------------------------ *@
+
+
+        <script>
+            $(document).on("submit", "#commentForm", function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    beforeSend: function () {
+                        $("#commentForm *").prop("disabled", true);
+                    },
+                    success: function (result) {
+                        if (result.includes("loginForm")) {
+                            window.location.replace("/Home/Login");
+                        } else {
+                            var reloadDiv = "comentariosDiv"
+                            $("#" + reloadDiv).html(result);
+                            $('#Comment').val("");
+                        }
+
+                    }
+                });
+            });
+
+
+            function responderComentario(id) {
+                var url = '/Comments/ResponderComentarios'
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: { 'Commentid': id },
+                    dataType: 'text',
+                    success: function (result) {
+                        if (result.includes("loginForm")) {
+                            window.location.replace("/Home/Login");
+                        } else {
+                            $("#comment" + id).append(result);
+                            $('html, body').animate({
+                                scrollTop: $("#comment" + id).offset().top
+                            }, 2000);
+                        }
+                    }
+                });
+            }
+
+
+            function EnviarPuntuacion(id, Puntuacion) {
+                var url = '/Events/PuntuarEvento'
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {
+                        'Id': id, 'Puntuacion': Puntuacion
+                    },
+                    dataType: 'text',
+                    success: function (result) {
+                        if (result.includes("loginForm")) {
+                            window.location.replace("/Home/Login");
+                        } else {
+                            window.location.reload();
+                        }
+                    }
+                });
+            }
+
+
+            function EnviarAsistencia(id, Tipo) {
+                var url = '/Events/EnviarInteres'
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {
+                        'id': id,
+                        'Tipo': Tipo
+                    },
+                    dataType: 'text',
+                    success: function (result) {
+                        if (result.includes("loginForm")) {
+                            window.location.replace("/Home/Login");
+                        } else {
+                            $("#AsistenciasDiv").html("");
+                            $("#AsistenciasDiv").append(result);
+                        }
+                    }
+                });
+            }
+
+        </script>
