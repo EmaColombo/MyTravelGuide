@@ -17,7 +17,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     
-    <title>@ViewBag.Title - MyTravelGuide</title>
+    <title>@ViewBag.Title - My Travel Guide</title>
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -30,18 +30,14 @@
         <nav class="nav-extended #757575 grey darken-1">
             <div class="nav-wrapper">
                 <!-- Logo -->
-                <a href="#!" class="brand-logo center">MyTravelGuide</a>
+                <a href="#!" class="brand-logo center">My Travel Guide</a>
 
                 <!-- Menu movil -->
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li class="@Html.IsSelected(controllers: "Home", actions: "Index", cssClass: "active")">@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null)</li>
-                    <li class="@Html.IsSelected(controllers: "Events", cssClass: "active")">@Html.ActionLink("Eventos", "Index", "Events", new { area = "" }, null)</li>
-                    @if (WebSecurity.IsAuthenticated)
-                    {
-                        <li class="@Html.IsSelected(controllers: "Events", actions: "Mios", cssClass: "active")">@Html.ActionLink("Mis eventos", "Mios", "Events", new { area = "" }, null)</li>
-                    }
+                    
                     <li class="@Html.IsSelected(controllers: "Events", cssClass: "active")">@Html.ActionLink("Mapa", "MapView", "Events", new { area = "" }, null)</li>
                 </ul>
 
@@ -79,16 +75,8 @@
                 <!-- Esto es para cuando se hace muy chica la pantalla-->
                 <ul class="side-nav" id="mobile-demo">
                     <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Eventos", "Index", "Events", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="@Html.IsSelected(controllers: "Users", cssClass: "active")">
-                        @if (WebSecurity.IsAuthenticated)
-                        {
-                            if (Roles.IsUserInRole(WebSecurity.CurrentUserName, "Admin"))
-                            {
-                                @Html.ActionLink("Administración", "Listado", "Users", new { area = "" }, null)
-                            }
-                        }
-                    </li>
+                    
+                    
                     <li class="@Html.IsSelected(controllers: "Home", actions: "Login", cssClass: "active")">
                         @if (WebSecurity.IsAuthenticated)
                         {
@@ -102,59 +90,11 @@
                 </ul>
             </div>
 
-            <!-- Barra debajo para categorías-->
-            @if (Html.IsSelected(controllers: "Events", actions: "Destacados") ||
-                Html.IsSelected(controllers: "Events", actions: "Musica") ||
-                Html.IsSelected(controllers: "Events", actions: "Fiestas") ||
-                Html.IsSelected(controllers: "Events", actions: "Artes") ||
-                Html.IsSelected(controllers: "Events", actions: "Gastronomia") ||
-                Html.IsSelected(controllers: "Events", actions: "Clases") ||
-                Html.IsSelected(controllers: "Events", actions: "Deportes") ||
-                Html.IsSelected(controllers: "Events", actions: "Index") ||
-                Html.IsSelected(controllers: "Events", actions: "Otros"))
-            {
-                <div class="nav-content">
-                    <ul class="tabs tabs-transparent">
-
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Events", actions:"Destacados", cssClass: "active")" target="_top" href="~/Events/Destacados"><i class="fa fa-star fa-fw"></i> Destacados</a>
-                        </li>
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Events", actions:"Musica", cssClass: "active")" target="_top" href="~/Events/Musica"><i class="fa fa-music fa-fw"></i> Música</a>
-                        </li>
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Events", actions:"Fiestas", cssClass: "active")" target="_top" href="~/Events/Fiestas"><i class="fa fa-beer fa-fw"></i> Fiestas</a>
-                        </li>
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Events", actions:"Artes", cssClass: "active")" target="_top" href="~/Events/Artes"><i class="fa fa-picture-o fa-fw"></i> Artes</a>
-                        </li>
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Events", actions:"Gastronomia", cssClass: "active")" target="_top" href="~/Events/Gastronomia"><i class="fa fa-cutlery fa-fw"></i> Gastronomía</a>
-                        </li>
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Events", actions:"Clases", cssClass: "active")" target="_top" href="~/Events/Clases"><i class="fa fa-graduation-cap fa-fw"></i> Clases</a>
-                        </li>
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Events", actions:"Deportes", cssClass: "active")" target="_top" href="~/Events/Deportes"><i class="fa fa-futbol-o fa-fw"></i> Deportes</a>
-                        </li>
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Events", actions:"Otros", cssClass: "active")" target="_top" href="~/Events/Otros"><i class="fa fa-folder-@Html.IsSelected(controllers: "Events", actions:"Otros", cssClass: "open-")o fa-fw")></i> Otros</a>
-                        </li>
-                    </ul>
-                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal pulse" href="~/Events/Create">
-                        <i class="material-icons">add</i>
-                    </a>
-                </div>
-            }
+            
 
             <!-- Barra debajo ediciones-->
             @if (Html.IsSelected(controllers: "Users", actions: "Listado") ||
-                 Html.IsSelected(controllers: "Users", actions: "Edit") ||
-                 Html.IsSelected(controllers: "Events", actions: "Listado") ||
-                 Html.IsSelected(controllers: "Comments", actions: "Listado") ||
-                 Html.IsSelected(controllers: "Comments", actions: "Details") ||
-                 Html.IsSelected(controllers: "Events", actions: "Delete") ||
-                 Html.IsSelected(controllers: "Manage", actions: "Reportes"))
+                 Html.IsSelected(controllers: "Users", actions: "Edit"))
             {
                 <div class="nav-content">
                     <ul class="tabs tabs-transparent">
@@ -162,25 +102,11 @@
                         <li class="tab">
                             <a class="@Html.IsSelected(controllers: "Users", cssClass: "active")" target="_top" href="~/Users/Listado"><i class="fa fa-user-circle-o fa-fw"></i> Usuarios</a>
                         </li>
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Events", cssClass: "active")" target="_top" href="~/Events/Listado"><i class="fa fa-calendar-o fa-fw"></i> Eventos</a>
-                        </li>
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Comments", cssClass: "active")" target="_top" href="~/Comments/Listado"><i class="fa fa-comments-o fa-fw"></i> Comentarios</a>
-                        </li>
-                        <li class="tab">
-                            <a class="@Html.IsSelected(controllers: "Manage", actions: "Reportes", cssClass: "active")" target="_top" href="~/Manage/Reportes"><i class="fa fa-flag-o fa-fw"></i> Reportes</a>
-                        </li>
+                        
                     </ul>
                     @if (Html.IsSelected(controllers: "Users"))
                     {
                         <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal pulse" href="~/Users/Create">
-                            <i class="material-icons">add</i>
-                        </a>
-                    }
-                    @if (Html.IsSelected(controllers: "Events"))
-                    {
-                        <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal pulse" href="~/Events/Create">
                             <i class="material-icons">add</i>
                         </a>
                     }

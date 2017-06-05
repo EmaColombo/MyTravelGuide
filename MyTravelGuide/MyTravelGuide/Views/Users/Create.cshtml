@@ -11,6 +11,7 @@
         @using (Html.BeginForm())
         {
             <div class="card-content">
+
                 <div class="input-field">
                     <i class="material-icons prefix">mail</i>
                     @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @data_length = "250" } })

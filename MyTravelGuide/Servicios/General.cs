@@ -18,7 +18,7 @@ namespace Servicios
             {
                 var client = new SmtpClient("smtp.gmail.com", 587)
                 {
-                    Credentials = new NetworkCredential("informacion.MyTravelGuide@gmail.com", "uccnpwqadocomhvy"),
+                    Credentials = new NetworkCredential("informacion.MyTravelGuide@gmail.com", "g10travel"),
                     EnableSsl = true
                 };
 
