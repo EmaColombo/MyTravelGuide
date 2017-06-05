@@ -18,11 +18,11 @@ namespace Servicios
             {
                 var client = new SmtpClient("smtp.gmail.com", 587)
                 {
-                    Credentials = new NetworkCredential("informacion.globalevents@gmail.com", "uccnpwqadocomhvy"),
+                    Credentials = new NetworkCredential("informacion.MyTravelGuide@gmail.com", "uccnpwqadocomhvy"),
                     EnableSsl = true
                 };
 
-                client.Send("informacion.globalevents@gmail.com", email, "Confirma tu cuenta", "Ingresa a la siguiente URL para verificar su cuenta: " +
+                client.Send("informacion.MyTravelGuide@gmail.com", email, "Confirma tu cuenta", "Ingresa a la siguiente URL para verificar su cuenta: " +
                    "http://" + (HttpContext.Current.Request.Url.Authority.Contains("localhost") ? HttpContext.Current.Request.Url.Authority : HttpContext.Current.Request.Url.Host) + "/Home/ValidarToken?Token=" + token);
                 return true;
             }

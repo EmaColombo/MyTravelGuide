@@ -15,3 +15,15 @@ E:\Ing Web\GlobalEvents\RepositorioClases\obj\Debug\RepositorioClases.csproj.Gen
 E:\Ing Web\GlobalEvents\RepositorioClases\obj\Debug\RepositorioClases.dll
 E:\Ing Web\GlobalEvents\RepositorioClases\obj\Debug\RepositorioClases.pdb
 E:\Ing Web\GlobalEvents\RepositorioClases\obj\Debug\RepositorioClases.Migrations.CiudadPais.resources
+E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\RepositorioClases.dll.config
+E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\RepositorioClases.dll
+E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\RepositorioClases.pdb
+E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\EntityFramework.dll
+E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\EntityFramework.SqlServer.dll
+E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\EntityFramework.xml
+E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\EntityFramework.SqlServer.xml
+E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.csprojResolveAssemblyReference.cache
+E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.dll
+E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.pdb
+E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.Migrations.actualizandotodo.resources
+E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.csproj.GenerateResource.Cache

@@ -52,29 +52,9 @@
   <ItemGroup>
     <Compile Include="Comments.cs" />
     <Compile Include="Events.cs" />
-    <Compile Include="Migrations\201705241232348_TablesPuntuacionesyAsistencias.cs" />
-    <Compile Include="Migrations\201705241232348_TablesPuntuacionesyAsistencias.Designer.cs">
-      <DependentUpon>201705241232348_TablesPuntuacionesyAsistencias.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705241819260_CambiosenEventosMaxi.cs" />
-    <Compile Include="Migrations\201705241819260_CambiosenEventosMaxi.Designer.cs">
-      <DependentUpon>201705241819260_CambiosenEventosMaxi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705301130115_UsersReportes.cs" />
-    <Compile Include="Migrations\201705301130115_UsersReportes.Designer.cs">
-      <DependentUpon>201705301130115_UsersReportes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705301413363_UserDestacado.cs" />
-    <Compile Include="Migrations\201705301413363_UserDestacado.Designer.cs">
-      <DependentUpon>201705301413363_UserDestacado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706011312330_FechaAnulacionNullable.cs" />
-    <Compile Include="Migrations\201706011312330_FechaAnulacionNullable.Designer.cs">
-      <DependentUpon>201706011312330_FechaAnulacionNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706042005136_CiudadPais.cs" />
-    <Compile Include="Migrations\201706042005136_CiudadPais.Designer.cs">
-      <DependentUpon>201706042005136_CiudadPais.cs</DependentUpon>
+    <Compile Include="Migrations\201706051245075_actualizandotodo.cs" />
+    <Compile Include="Migrations\201706051245075_actualizandotodo.Designer.cs">
+      <DependentUpon>201706051245075_actualizandotodo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelo.cs" />
@@ -87,23 +67,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705241232348_TablesPuntuacionesyAsistencias.resx">
-      <DependentUpon>201705241232348_TablesPuntuacionesyAsistencias.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705241819260_CambiosenEventosMaxi.resx">
-      <DependentUpon>201705241819260_CambiosenEventosMaxi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705301130115_UsersReportes.resx">
-      <DependentUpon>201705301130115_UsersReportes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705301413363_UserDestacado.resx">
-      <DependentUpon>201705301413363_UserDestacado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706011312330_FechaAnulacionNullable.resx">
-      <DependentUpon>201706011312330_FechaAnulacionNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706042005136_CiudadPais.resx">
-      <DependentUpon>201706042005136_CiudadPais.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706051245075_actualizandotodo.resx">
+      <DependentUpon>201706051245075_actualizandotodo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
