@@ -59,11 +59,9 @@ namespace RepositorioClases
         //[StringLength(200)]
         public String RutaImagen { get; set; }
 
-        [ForeignKey("EventId")]
-        public virtual List<Comments> Comments { get; set; }
 
         [Required]
-        public EventState Estado { get; set; }
+        public States.EventState Estado { get; set; }
 
         public Nullable<TimeSpan> HoraInicio { get; set; }
 
@@ -145,14 +143,7 @@ namespace RepositorioClases
         public DateTime? FechaAnulacion { get; set; }
     }
 
-    public enum EventState
-    {
-        Habilitado = 1,
-        Bloqueado = 2,
-        Reportado = 3,
-        Eliminado = 4,
-        Pendiente_De_Aprobacion = 5
-    }
+
 
     public enum Categorias
     {

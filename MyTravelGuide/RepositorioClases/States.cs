@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RepositorioClases
+{
+    public class States
+    {
+        public enum EventState
+        {
+            Habilitado = 1,
+            Bloqueado = 2,
+            Reportado = 3,
+            Eliminado = 4,
+            Pendiente_De_Aprobacion = 5
+        }
+
+        public enum UserState
+        {
+            Activo = 1,
+            Bloqueado = 2,
+            Reportado = 3,
+            Eliminado = 4,
+            Inactivo = 5
+        }
+    }
+}

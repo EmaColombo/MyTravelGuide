@@ -5,15 +5,6 @@ namespace RepositorioClases
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public enum UserState
-    {
-        Activo = 1,
-        Bloqueado = 2,
-        Reportado = 3,
-        Eliminado = 4,
-        Inactivo = 5
-    }
-
     public class Users
     {
         public Int32 Id { get; set; }
@@ -32,15 +23,13 @@ namespace RepositorioClases
         public string Email { get; set; }
 
         [Required(ErrorMessage = "El campo Estado es obligatorio")]
-        public UserState Estado { get; set; }
+        public States.UserState Estado { get; set; }
 
         public bool? UserDestacado { get; set; }
 
         [ForeignKey("IdUser")]
         public virtual List<VotosUsersEvents> Votos { get; set; }
 
-        [ForeignKey("IdUsuario")]
-        public virtual List<CommentsReportes> Reportes { get; set; }
 
         [ForeignKey("IdUsuario")]
         public virtual List<EventsReportes> ReportesEv { get; set; }

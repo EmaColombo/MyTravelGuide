@@ -50,7 +50,7 @@ namespace MyTravelGuide.Controllers
                 Users users = context.Users.Where(u => u.Email == model.Email).FirstOrDefault();
                 if (users != null)
                 {
-                    if (users.Estado == UserState.Bloqueado || users.Estado == UserState.Eliminado || users.Estado == UserState.Inactivo)
+                    if (users.Estado == States.UserState.Bloqueado || users.Estado == States.UserState.Eliminado || users.Estado == States.UserState.Inactivo)
                     {
                         ModelState.AddModelError("", "La cuenta se encuentra " + users.Estado.ToString());
                         return View();

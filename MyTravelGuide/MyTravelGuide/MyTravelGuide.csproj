@@ -157,7 +157,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ControllersHelper\EventsHelpers.cs" />
     <Compile Include="Controllers\ControllersHelper\HtmlHelper.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -165,7 +164,6 @@
     <Compile Include="Controllers\Errores.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Filters\InitializeSimpleMembership.cs" />
     <Compile Include="Global.asax.cs">

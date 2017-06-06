@@ -215,8 +215,8 @@ namespace MyTravelGuide.Controllers
                         HoraInicio = events.HoraInicio,
                         NombreEvento = events.NombreEvento,
                         Estado = Rolls.ObtenerEstadoEventoPorUsuario(WebSecurity.CurrentUserId) ?
-                                    EventState.Habilitado :
-                                    EventState.Pendiente_De_Aprobacion,
+                                    States.EventState.Habilitado :
+                                    States.EventState.Pendiente_De_Aprobacion,
                         Destacado = Rolls.ObtenerSiEventoEsDestacado(WebSecurity.CurrentUserId)
                     };
 
@@ -335,29 +335,6 @@ namespace MyTravelGuide.Controllers
             }
         }
 
-        public ActionResult GetEventCommets(int IdEvento)
-        {
-            var comments = CommentsService.ObtenerComentarios(IdEvento).Select(u => new ViewModels.Comments()
-            {
-                iDUsuario = u.iDUsuario,
-                CommentId = u.CommentId,
-                EventId = u.EventId,
-                Comentario = u.Comentario,
-                ComentarioPadre = u.ComentarioPadre,
-                Like = u.Like,
-                UnLike = u.UnLike,
-                Fecha = u.Fecha
-            }).ToList();
-
-            var viewModel = new CommentsModel
-            {
-                CommentsList = comments,
-                Comment = ""
-            };
-
-            return PartialView(@"~/Views/Events/CommentsView.cshtml", viewModel);
-        }
-
 
         [HttpPost]
         [MyAuthorize]
@@ -443,7 +420,7 @@ namespace MyTravelGuide.Controllers
                 double maxlat = Convert.ToDouble(lat.Replace(".", ",")) + 0.05;
                 double minlat = Convert.ToDouble(lat.Replace(".", ",")) - 0.05;
                 context.Configuration.LazyLoadingEnabled = false;
-                List<Events> eventos = context.Events.Where(u => u.Estado == EventState.Habilitado && 
+                List<Events> eventos = context.Events.Where(u => u.Estado == States.EventState.Habilitado && 
                 u.FechaInicio.Day == DateTime.Now.Day && u.FechaInicio.Month == DateTime.Now.Month && u.FechaInicio.Year == DateTime.Now.Year).ToList();
                 if (eventos.Count > 0)
                 {
@@ -460,26 +437,7 @@ namespace MyTravelGuide.Controllers
             }
         }
 
-        [MyAuthorize(Roles = "Admin")]
-        public ActionResult EventosReportados()
-        {
-            var comments = ReportServices.ObtenerEventosReportados();
-            List<EventosModeracionModel> Lista = new List<EventosModeracionModel>();
-            foreach (EventsReportes reporte in comments)
-            {
-                EventosModeracionModel comentario = new EventosModeracionModel();
-                comentario.ReporteId = reporte.ReporteId;
-                comentario.EventId = reporte.EventId;
-                comentario.Evento = EventsService.ObtenerEventos(comentario.EventId).FirstOrDefault().NombreEvento;
-                comentario.Fecha = reporte.Fecha;
-                comentario.IdUsuario = reporte.IdUsuario;
-                comentario.Observacion = reporte.Observacion;
-                comentario.Usuario = UserService.Get(comentario.IdUsuario).FirstOrDefault().Usuario;
-                Lista.Add(comentario);
-                comentario = null;
-            }
-            return View(@"EventosReportados", Lista);
-        }
+        
 
         [MyAuthorize]
         public ActionResult ReportarEvento(int id)
@@ -492,15 +450,7 @@ namespace MyTravelGuide.Controllers
             return View("ReportarEvento", reporte);
         }
 
-        [HttpPost]
-        [MyAuthorize]
-        public ActionResult ReportarEvento(EventsReportes reporte)
-        {
-            reporte.IdUsuario = WebSecurity.CurrentUserId;
-            ReportServices.CreateReporte(reporte);
-            EventsService.CambiarEstadoEvento(reporte.EventId, EventState.Reportado);
-            return RedirectToAction("Details", "Events", new { id = reporte.EventId });
-        }
+        
 
         [HttpPost]
         [MyAuthorize]

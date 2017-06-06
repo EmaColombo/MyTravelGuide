@@ -46,7 +46,7 @@ namespace Servicios
                     .Where(u => id.HasValue ?
                         id.Value == u.Id :
                         true)
-                    .Where(z => z.Estado != UserState.Eliminado)
+                    .Where(z => z.Estado != States.UserState.Eliminado)
                     .ToList();
             }
         }
@@ -90,14 +90,14 @@ namespace Servicios
                 // FirstOrDefault va a intentar recuperar el registro que cumpla la condición
                 // si no encuentra ninguno, devuelve NULL, de ahí el siguiente IF.
                 if (users != null)
-                    users.Estado = UserState.Eliminado;
+                    users.Estado = States.UserState.Eliminado;
 
                 // el objeto en memoria persiste los cambios en la base de datos cuando hago un save sobre el contexto.
                 context.SaveChanges();
             }
         }
 
-        public static bool CambiarEstadoUsuario(long UserId, UserState estado)
+        public static bool CambiarEstadoUsuario(long UserId, States.UserState estado)
         {
             using (Modelo context = new Modelo())
             {

@@ -68,7 +68,7 @@ namespace ViewModels
             public Nullable<TimeSpan> HoraFin { get; set; }
 
             [Required]
-            public EventState Estado { get; set; }
+            public States.EventState Estado { get; set; }
 
         }
 
@@ -130,17 +130,6 @@ namespace ViewModels
 
     }
 
-    public class EventosModeracionModel
-    {
-        public int ReporteId { get; set; }
-        public int IdUsuario { get; set; }
-        public long EventId { get; set; }
-        public string Evento { get; set; }
-        public string Usuario { get; set; }
-        public DateTime Fecha { get; set; }
-        public string Observacion { get; set; }
-        public Estado Estado { get; set; }
-    }
 
     public class InteresesEventosModel
     {

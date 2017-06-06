@@ -15,7 +15,7 @@ namespace MyTravelGuide
                         "~/Scripts/jquery.validate.min.js",
                         "~/Scripts/respond.js",
                         "~/Scripts/respond.min.js",
-                        "~/Scripts/materialize.js",
+                        //"~/Scripts/materialize.js",
                         "~/Scripts/materialize.min.js",
                         "~/Scripts/materialize.clockpicker.js"));
 
@@ -30,7 +30,7 @@ namespace MyTravelGuide
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/font-awesome.css",
                       "~/Content/font-awesome.min.css",
-                      "~/Content/materialize.css",
+                      //"~/Content/materialize.css",
                       "~/Content/materialize.min.css"));
         }
     }

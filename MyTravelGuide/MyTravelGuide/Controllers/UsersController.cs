@@ -56,7 +56,6 @@ namespace MyTravelGuide.Controllers
                 Eventos = EventsService.ObtenerEventos(null).Where(z => z.IdUser == id).ToList().Count,
                 EventosAsistidos = EventsService.ObtenerEventosAsistidos((int)id).Count,
                 ListaDeDeseos = EventsService.ObtenerEventosDeseados((int)id).Count,
-                Rank = Rolls.ObtenerRankPorUsuario((int)id) 
             }).FirstOrDefault();
 
             return View(user);

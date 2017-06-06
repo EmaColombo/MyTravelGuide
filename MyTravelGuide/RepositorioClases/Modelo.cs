@@ -17,9 +17,7 @@ namespace RepositorioClases
         public virtual DbSet<Membership> Memberships { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<UsersInRole> UsersInRoles { get; set; }
-        public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<VotosUsersEvents> VotosUserEvents { get; set; }
-        public virtual DbSet<CommentsReportes> CommentsReportes { get; set; }
         public virtual DbSet<EventsReportes> EventsReportes { get; set; }
         public virtual DbSet<PuntuacionesEventos> PuntuacionesEventos { get; set; }
         public virtual DbSet<InteresesEventos> InteresesEventos { get; set; }
@@ -43,18 +41,6 @@ namespace RepositorioClases
                 .WithMany(t => t.Votos)
                 .HasForeignKey(t => t.IdUser);
 
-            builder.Entity<CommentsReportes>().HasKey(q => q.ReporteId);
-
-            // Relationships
-            builder.Entity<CommentsReportes>()
-                .HasRequired(t => t.Coments)
-                .WithMany(t => t.Reportes)
-                .HasForeignKey(t => t.CommentId);
-
-            builder.Entity<CommentsReportes>()
-                .HasRequired(t => t.User)
-                .WithMany(t => t.Reportes)
-                .HasForeignKey(t => t.IdUsuario);
         }
     }
 }

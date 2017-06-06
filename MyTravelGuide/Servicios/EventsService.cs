@@ -25,13 +25,12 @@ namespace Servicios
             {
                 List<Events> Eventos = context.Events.Where(u => id.HasValue ? id.Value == u.Id : true).ToList();
                 // Si es el get de detalle, trae los comentarios también.
-                if (Eventos.Count > 0)
-                    Eventos.FirstOrDefault().Comments = CommentsService.ObtenerComentarios(id.GetValueOrDefault()).ToList();
+               
                 // No traerse los eliminados.
                 if (Eliminados)
                     return Eventos;
                 else
-                    return Eventos.Where(z => z.Estado != EventState.Eliminado).ToList();
+                    return Eventos.Where(z => z.Estado != States.EventState.Eliminado).ToList();
             }
         }
 
@@ -101,7 +100,7 @@ namespace Servicios
         {
             using (Modelo context = new Modelo())
             {
-                var eventos = context.Events.Where(u => id.HasValue ? id.Value == u.Id : true && u.Estado == EventState.Habilitado && u.lat != null).ToList();
+                var eventos = context.Events.Where(u => id.HasValue ? id.Value == u.Id : true && u.Estado == States.EventState.Habilitado && u.lat != null).ToList();
                 return eventos;
             }
         }
@@ -175,7 +174,7 @@ namespace Servicios
                 // FirstOrDefault va a intentar recuperar el registro que cumpla la condición
                 // si no encuentra ninguno, devuelve NULL, de ahí el siguiente IF.
                 if (even != null)
-                    even.Estado = EventState.Eliminado;
+                    even.Estado = States.EventState.Eliminado;
 
                 // el objeto en memoria persiste los cambios en la base de datos cuando hago un save sobre el contexto.
                 context.SaveChanges();
@@ -188,7 +187,7 @@ namespace Servicios
         /// <param name="EventId"></param>
         /// <param name="estado"></param>
         /// <returns></returns>
-        public static bool CambiarEstadoEvento(long EventId, EventState estado)
+        public static bool CambiarEstadoEvento(long EventId, States.EventState estado)
         {
             using (Modelo context = new Modelo())
             {
