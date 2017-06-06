@@ -27,59 +27,7 @@ namespace MyTravelGuide.Controllers
             return View(Lista);
         }
 
-        public ActionResult Mios()
-        {
-            List<Events> Lista = EventsService.ObtenerEventos(null, false).Where(z => z.IdUser == WebSecurity.CurrentUserId).ToList();
-            return View(Lista);
-        }
-
-        public ActionResult Destacados()
-        {
-            List<Events> Lista = EventsService.ObtenerEventos(null, false).Where(z => z.Destacado == true).ToList();
-            return View(Lista);
-        }
-
-        public ActionResult Musica()
-        {
-            List<Events> Lista = EventsService.ObtenerEventos(null, false).Where(z => z.IdCategoria == Categorias.Musica).ToList();
-            return View(Lista);
-        }
-
-        public ActionResult Fiestas()
-        {
-            List<Events> Lista = EventsService.ObtenerEventos(null, false).Where(z => z.IdCategoria == Categorias.Fiestas).ToList();
-            return View(Lista);
-        }
-
-        public ActionResult Artes()
-        {
-            List<Events> Lista = EventsService.ObtenerEventos(null, false).Where(z => z.IdCategoria == Categorias.Artes).ToList();
-            return View(Lista);
-        }
-
-        public ActionResult Gastronomia()
-        {
-            List<Events> Lista = EventsService.ObtenerEventos(null, false).Where(z => z.IdCategoria == Categorias.Gastronomia).ToList();
-            return View(Lista);
-        }
-
-        public ActionResult Clases()
-        {
-            List<Events> Lista = EventsService.ObtenerEventos(null, false).Where(z => z.IdCategoria == Categorias.Clases).ToList();
-            return View(Lista);
-        }
-
-        public ActionResult Deportes()
-        {
-            List<Events> Lista = EventsService.ObtenerEventos(null, false).Where(z => z.IdCategoria == Categorias.Deportes).ToList();
-            return View(Lista);
-        }
-
-        public ActionResult Otros()
-        {
-            List<Events> Lista = EventsService.ObtenerEventos(null, false).Where(z => z.IdCategoria == Categorias.Otros).ToList();
-            return View(Lista);
-        }
+        
 
         // GET: Events/Details/5
         [HttpGet]
@@ -174,7 +122,7 @@ namespace MyTravelGuide.Controllers
         [MyAuthorize]
         public ActionResult Create()
         {
-            EventViewModel.EventCreateModel model = new EventViewModel.EventCreateModel { IdCategoria = Categorias.Otros, FechaInicio = DateTime.Now, FechaFin = DateTime.Now};
+            EventViewModel.EventCreateModel model = new EventViewModel.EventCreateModel { IdCategoria = Categories.Otros, FechaInicio = DateTime.Now, FechaFin = DateTime.Now};
             return View(model);
         }
 

@@ -44,7 +44,7 @@ namespace RepositorioClases
 
         [Required]
         [Range(0, 7, ErrorMessage = "Seleccione una categoría correcta")]
-        public Categorias IdCategoria { get; set; }
+        public Categories IdCategoria { get; set; }
 
         [Required]
         [Display(Name = "Evento Destacado")]
@@ -145,7 +145,7 @@ namespace RepositorioClases
 
 
 
-    public enum Categorias
+    public enum Categories
     {
         Musica = 1,
         Fiestas = 2,

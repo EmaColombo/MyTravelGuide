@@ -164,6 +164,7 @@
     <Compile Include="Controllers\Errores.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TravelGuidesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Filters\InitializeSimpleMembership.cs" />
     <Compile Include="Global.asax.cs">
@@ -306,6 +307,11 @@
     <Content Include="Views\Users\UsuariosReportados.cshtml" />
     <Content Include="Views\Manage\UserReported.cshtml" />
     <Content Include="Views\Events\AsistenciaEvento.cshtml" />
+    <Content Include="Views\TravelGuides\Create.cshtml" />
+    <Content Include="Views\TravelGuides\Delete.cshtml" />
+    <Content Include="Views\TravelGuides\Details.cshtml" />
+    <Content Include="Views\TravelGuides\Edit.cshtml" />
+    <Content Include="Views\TravelGuides\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
