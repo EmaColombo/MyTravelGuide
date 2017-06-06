@@ -53,7 +53,6 @@ namespace MyTravelGuide.Controllers
                 Apellido = u.Apellido,
                 Usuario = u.Usuario,
                 Estado = u.Estado,
-                Comentarios = CommentsService.ObtenerComentariosUser((int)id).Count,
                 Eventos = EventsService.ObtenerEventos(null).Where(z => z.IdUser == id).ToList().Count,
                 EventosAsistidos = EventsService.ObtenerEventosAsistidos((int)id).Count,
                 ListaDeDeseos = EventsService.ObtenerEventosDeseados((int)id).Count,
@@ -251,36 +250,5 @@ namespace MyTravelGuide.Controllers
             return View("ReportarUsuario", reporte);
         }
 
-        [HttpPost]
-        [MyAuthorize]
-        public ActionResult ReportarUsuario(UsersReportes reporte)
-        {
-            reporte.IdUsuario = WebSecurity.CurrentUserId;
-            ReportServices.CreateReporte(reporte);
-            UserService.CambiarEstadoUsuario(reporte.UserId, UserState.Reportado);
-            return RedirectToAction("Details", "Users", new { id = reporte.UserId });
-        }
-
-
-        [MyAuthorize(Roles = "Admin")]
-        public ActionResult UsuariosReportados()
-        {
-            var comments = ReportServices.ObtenerUsuariosReportados();
-            List<UsersModeracionModel> Lista = new List<UsersModeracionModel>();
-            foreach (UsersReportes reporte in comments)
-            {
-                UsersModeracionModel user = new UsersModeracionModel();
-                user.ReporteId = reporte.ReporteId;
-                user.UserIdReportado = reporte.UserId;
-                user.Usuario = UserService.Get(user.UserIdReportado).FirstOrDefault().Usuario;
-                user.Fecha = reporte.Fecha;
-                user.IdUsuario = reporte.IdUsuario;
-                user.Observacion = reporte.Observacion;
-                user.Usuario = UserService.Get(user.IdUsuario).FirstOrDefault().Usuario;
-                Lista.Add(user);
-                user = null;
-            }
-            return View(@"UsuariosReportados", Lista);
-        }
     }
 }
