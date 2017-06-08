@@ -1,17 +1,24 @@
-﻿using System;
+﻿using RepositorioClases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
+using static ViewModels.ExtraModels;
 
-namespace RepositorioClases
+namespace ViewModels
 {
-    public class TravelGuides
+    public class TravelGuideModel
+    {
+        public TravelGuidesViewModel Model;
+    }
+
+    public class TravelGuidesViewModel
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long TravelGuideId { get; set; }
 
         [Required]
@@ -47,6 +54,8 @@ namespace RepositorioClases
         [Required]
         public DateTime CreationDate { get; set; }
 
-        public int CountryId { get; set; }
+        public List<CountryListModel> Countries { get; set; }
+
+        public int SelectedCountry { get; set; }
     }
 }

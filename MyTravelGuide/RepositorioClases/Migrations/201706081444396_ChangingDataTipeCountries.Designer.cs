@@ -7,13 +7,13 @@ namespace RepositorioClases.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class actualizandotodo : IMigrationMetadata
+    public sealed partial class ChangingDataTipeCountries : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(actualizandotodo));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangingDataTipeCountries));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706051245075_actualizandotodo"; }
+            get { return "201706081444396_ChangingDataTipeCountries"; }
         }
         
         string IMigrationMetadata.Source

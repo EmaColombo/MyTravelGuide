@@ -7,6 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RepositorioClases;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Security.Cryptography.Xml;
+using System.Web.Helpers;
+using Newtonsoft.Json;
+using Servicios;
+using ViewModels;
+using static ViewModels.ExtraModels;
 
 namespace MyTravelGuide.Controllers
 {
@@ -14,9 +22,10 @@ namespace MyTravelGuide.Controllers
     {
         private Modelo db = new Modelo();
 
+
         // GET: TravelGuides
         public ActionResult Index()
-        {
+        {            
             return View(db.TravelGuides.ToList());
         }
 
@@ -38,7 +47,13 @@ namespace MyTravelGuide.Controllers
         // GET: TravelGuides/Create
         public ActionResult Create()
         {
-            return View();
+            TravelGuideModel tg = new TravelGuideModel();
+            tg.Model = new TravelGuidesViewModel();
+            List<ExtraModels.CountryListModel> Lista = GetCountriesItems().ToList();
+            tg.Model.Countries = Lista;
+            tg.Model.EndDate = DateTime.Now;
+            tg.Model.StartDate = DateTime.Now;
+            return View(tg);
         }
 
         // POST: TravelGuides/Create
@@ -122,6 +137,19 @@ namespace MyTravelGuide.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private List<CountryListModel> GetCountriesItems()
+        {
+            var allcountries = ExtraServices.GetCountries().Select(c=> new CountryListModel()
+            {
+                countryname = c.CountryName,
+                id = c.CountryId
+            });
+            
+
+            return allcountries.ToList();
+
         }
     }
 }
