@@ -10,7 +10,6 @@
 
     @using (Html.BeginForm("Create", "TravelGuides", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
 
@@ -18,38 +17,25 @@
 
             <div class="input-field">
                 <i class="material-icons prefix">label</i>
-                @Html.EditorFor(model => model.Model.TravelGuideName, new { htmlAttributes = new { @class = "form-control", @data_length = "200" } })
-                @Html.LabelFor(model => model.Model.TravelGuideName, new { @data_error = "Error", @data_success = "" })
-                @Html.ValidationMessageFor(model => model.Model.TravelGuideName, "", new { @class = "validate" })
+                @Html.EditorFor(model => model.ObjectModel.TravelGuideName, new { htmlAttributes = new { @class = "form-control", @data_length = "200" } })
+                @Html.LabelFor(model => model.ObjectModel.TravelGuideName, new { @data_error = "Error", @data_success = "" })
+                @Html.ValidationMessageFor(model => model.ObjectModel.TravelGuideName, "", new { @class = "validate" })
             </div>
 
             <div class="input-field">
-                @Html.TextAreaFor(model => model.Model.Description, new { @class = "materialize-textarea", @data_length = "500" })
-                @Html.LabelFor(model => model.Model.Description)
-                @Html.ValidationMessageFor(model => model.Model.Description, "", new { @class = "validate" })
+                @Html.TextAreaFor(model => model.ObjectModel.Description, new { @class = "materialize-textarea", @data_length = "500" })
+                @Html.LabelFor(model => model.ObjectModel.Description)
+                @Html.ValidationMessageFor(model => model.ObjectModel.Description, "", new { @class = "validate" })
             </div>
-
-            @*<div class="row">
-                    <div class="input-field col s6">
-                        @Html.LabelFor(model => model.Model.SelectedCountry)
-                        @Html.DropDownListFor(model => model.Model.SelectedCountry, new SelectList(Model.Model.Countries, "Value", "Text"), "País", new { @class = "form-control" })
-                    </div>
-                </div>*@
 
             <script>$('#Descripcion').trigger('autoresize');</script>
 
-            <div class="input-field">
-                <i class="material-icons prefix">location_on</i>
-                @Html.EditorFor(model => model.Model.Direccion, new { htmlAttributes = new { @class = "form-control", @data_length = "200" } })
-                @Html.LabelFor(model => model.Model.Direccion)
-                @Html.ValidationMessageFor(model => model.Model.Direccion, "", new { @class = "text-danger" })
-            </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    @Html.LabelFor(model => model.Model.StartDate, htmlAttributes: new { @class = "active" })
-                    @Html.EditorFor(model => model.Model.StartDate, new { htmlAttributes = new { @class = "datepicker" } })
-                    @Html.ValidationMessageFor(model => model.Model.StartDate, "", new { @class = "validate" })
+                    @Html.LabelFor(model => model.ObjectModel.StartDate, htmlAttributes: new { @class = "active" })
+                    @Html.EditorFor(model => model.ObjectModel.StartDate, new { htmlAttributes = new { @class = "datepicker" } })
+                    @Html.ValidationMessageFor(model => model.ObjectModel.StartDate, "", new { @class = "validate" })
                 </div>
                 <div class="input-field col s6">
                     <input class="text-box single-line col-2" id="HoraInicio" name="HoraInicio" type="time" value="12:00" />
@@ -59,9 +45,9 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    @Html.LabelFor(model => model.Model.EndDate, htmlAttributes: new { @class = "active" })
-                    @Html.EditorFor(model => model.Model.EndDate, new { htmlAttributes = new { @class = "datepicker" } })
-                    @Html.ValidationMessageFor(model => model.Model.EndDate, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.ObjectModel.EndDate, htmlAttributes: new { @class = "active" })
+                    @Html.EditorFor(model => model.ObjectModel.EndDate, new { htmlAttributes = new { @class = "datepicker" } })
+                    @Html.ValidationMessageFor(model => model.ObjectModel.EndDate, "", new { @class = "text-danger" })
                 </div>
                 <div class="input-field col s6">
                     <input class="text-box single-line col-2" id="HoraFin" name="HoraFin" type="time" value="12:00" />
@@ -71,12 +57,26 @@
 
                 <div class="row">
                     <div class="input-field col s6">
-                        @Html.DropDownListFor(model => model.Model.SelectedCountry, new SelectList(Model.Model.Countries, "id", "countryname"), "País Destino", new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.ObjectModel.SelectedCountry, new SelectList(Model.ObjectModel.Countries, "id", "countryname"), "País Destino", new { @class = "form-control" })
                     </div>
                  </div>
                 </div>
+
+            <br />
+            <label for="file">Imagen del evento: </label>
+            <br />
+            <input type="file" name="file" id="file" />
+
+            <br />
+            <br />
+            <div class="form-group right-align">
+                <div class="col-md-offset-2 col-md-10 align-center">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
             </div>
-    }
+
+            </div>
+
 
 
         <script>
@@ -90,3 +90,4 @@
                 $('select').material_select();
             });
 </script>
+    }

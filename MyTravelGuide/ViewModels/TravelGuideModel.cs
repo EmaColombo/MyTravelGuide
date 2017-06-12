@@ -13,7 +13,7 @@ namespace ViewModels
 {
     public class TravelGuideModel
     {
-        public TravelGuidesViewModel Model;
+        public TravelGuidesViewModel ObjectModel { get; set; }
     }
 
     public class TravelGuidesViewModel
@@ -45,10 +45,6 @@ namespace ViewModels
         [Display(Name = "UserId")]
         public int IdUser { get; set; }
 
-        [Required]
-        [StringLength(200)]
-        public string Direccion { get; set; }
-
         public String Image { get; set; }
 
         [Required]
@@ -57,5 +53,13 @@ namespace ViewModels
         public List<CountryListModel> Countries { get; set; }
 
         public int SelectedCountry { get; set; }
+
+        public States.TravelGuideState State { get; set; }
     }
+
+    public class TravelGuidesViewModelList
+    {
+        public List<TravelGuidesViewModel> List { get; set; }
+    }
+
 }

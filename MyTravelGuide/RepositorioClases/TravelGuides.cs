@@ -38,9 +38,6 @@ namespace RepositorioClases
         [Display(Name = "UserId")]
         public int IdUser { get; set; }
 
-        [Required]
-        [StringLength(200)]
-        public string Direccion { get; set; }
 
         public String Image { get; set; }
 
@@ -48,5 +45,7 @@ namespace RepositorioClases
         public DateTime CreationDate { get; set; }
 
         public int CountryId { get; set; }
+
+        public States.TravelGuideState State { get; set; }
     }
 }

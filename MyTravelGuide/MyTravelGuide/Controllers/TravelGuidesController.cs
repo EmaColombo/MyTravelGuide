@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using Servicios;
 using ViewModels;
 using static ViewModels.ExtraModels;
+using WebMatrix.WebData;
 
 namespace MyTravelGuide.Controllers
 {
@@ -25,8 +26,31 @@ namespace MyTravelGuide.Controllers
 
         // GET: TravelGuides
         public ActionResult Index()
-        {            
-            return View(db.TravelGuides.ToList());
+        {
+            TravelGuidesViewModelList Modelo = new TravelGuidesViewModelList();
+            Modelo.List = new List<TravelGuidesViewModel>();
+            List<TravelGuides> TravelGuidesList = new List<TravelGuides>();
+            using (Modelo context = new RepositorioClases.Modelo())
+            {
+                TravelGuidesList = context.TravelGuides.Where(c => c.State != States.TravelGuideState.Eliminado).ToList();
+            }
+            foreach (TravelGuides c in TravelGuidesList) {
+                TravelGuidesViewModel item = new TravelGuidesViewModel();
+                item.CreationDate = c.CreationDate;
+                item.Description = c.Description;
+                item.EndDate = c.EndDate;
+                item.IdUser = c.IdUser;
+                item.Image = c.Image;
+                item.SelectedCountry = c.CountryId;
+                item.StartDate = c.StartDate;
+                item.State = c.State;
+                item.TravelGuideId = c.TravelGuideId;
+                item.TravelGuideName = c.TravelGuideName;
+                Modelo.List.Add(item);
+                item = null;
+            }
+            return View(Modelo);
+
         }
 
         // GET: TravelGuides/Details/5
@@ -48,11 +72,11 @@ namespace MyTravelGuide.Controllers
         public ActionResult Create()
         {
             TravelGuideModel tg = new TravelGuideModel();
-            tg.Model = new TravelGuidesViewModel();
+            tg.ObjectModel = new TravelGuidesViewModel();
             List<ExtraModels.CountryListModel> Lista = GetCountriesItems().ToList();
-            tg.Model.Countries = Lista;
-            tg.Model.EndDate = DateTime.Now;
-            tg.Model.StartDate = DateTime.Now;
+            tg.ObjectModel.Countries = Lista;
+            tg.ObjectModel.EndDate = DateTime.Now;
+            tg.ObjectModel.StartDate = DateTime.Now;
             return View(tg);
         }
 
@@ -60,17 +84,26 @@ namespace MyTravelGuide.Controllers
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TravelGuideId,TravelGuideName,Description,StartDate,EndDate,IdUser,Direccion,Image,EventState,CreationDate")] TravelGuides travelGuides)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create(TravelGuideModel TravelGuideModel, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                db.TravelGuides.Add(travelGuides);
-                db.SaveChanges();
+                TravelGuides tg = new TravelGuides();
+                tg.CountryId = TravelGuideModel.ObjectModel.SelectedCountry;
+                tg.CreationDate = DateTime.Now;
+                tg.Description = TravelGuideModel.ObjectModel.Description;
+                tg.EndDate = TravelGuideModel.ObjectModel.EndDate;
+                tg.IdUser = WebSecurity.CurrentUserId;
+                tg.Image = TravelGuideModel.ObjectModel.Image;
+                tg.StartDate = TravelGuideModel.ObjectModel.StartDate;
+                tg.State = States.TravelGuideState.Activo;
+                tg.TravelGuideName = TravelGuideModel.ObjectModel.TravelGuideName;
+                TravelGuideServices.Create(tg, file);
                 return RedirectToAction("Index");
             }
 
-            return View(travelGuides);
+            return View(TravelGuideModel);
         }
 
         // GET: TravelGuides/Edit/5

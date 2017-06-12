@@ -25,5 +25,12 @@ namespace RepositorioClases
             Eliminado = 4,
             Inactivo = 5
         }
+
+        public enum TravelGuideState
+        {
+            Activo = 1,
+            Eliminado = 2,
+            Realizado = 3
+        }
     }
 }

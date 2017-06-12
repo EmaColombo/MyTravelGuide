@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201706081444396_ChangingDataTipeCountries.Designer.cs">
       <DependentUpon>201706081444396_ChangingDataTipeCountries.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706091735592_travelguidestate.cs" />
+    <Compile Include="Migrations\201706091735592_travelguidestate.Designer.cs">
+      <DependentUpon>201706091735592_travelguidestate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706081444396_ChangingDataTipeCountries.resx">
       <DependentUpon>201706081444396_ChangingDataTipeCountries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706091735592_travelguidestate.resx">
+      <DependentUpon>201706091735592_travelguidestate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

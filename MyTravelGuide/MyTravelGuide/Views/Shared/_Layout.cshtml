@@ -25,20 +25,33 @@
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
-
     <div class="navbar-fixed">
         <nav class="nav-extended #64b5f6 blue lighten-2">
             <div class="nav-wrapper">
                 <!-- Logo -->
                 <a href="#!" class="brand-logo center">My Travel Guide</a>
 
+                <!-- Dropdown Structure -->
+                <ul id="dropdownTravelGuide" class="dropdown-content">
+                    <li><a href="~/TravelGuides/Create">New Travel Guide</a></li>
+                    <li class="divider"></li>
+                    <li><a href="@Url.Action("Index", "TravelGuides")">Travel Guides</a></li>
+                </ul>
+
                 <!-- Menu movil -->
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                
+                <ul id="dropdownTravelGuide" class="dropdown-content">
+                    <li><a href="~/TravelGuides/Create">New Travel Guide</a></li>
+                    <li class="divider"></li>
+                    <li><a href="@Url.Action("Index", "TravelGuides")">Travel Guides</a></li>
+                </ul>
 
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li class="@Html.IsSelected(controllers: "Home", actions: "Index", cssClass: "active")">@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null)</li>
-                    
-                    <li class="@Html.IsSelected(controllers: "Events", cssClass: "active")">@Html.ActionLink("Mapa", "MapView", "Events", new { area = "" }, null)</li>
+                </ul>
+                <ul>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdownTravelGuide">Travel Guides<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -115,9 +128,16 @@
         </nav>
     </div>
 
-    <script>$( document ).ready(function(){
-    $(".button-collapse").sideNav();
-    });</script>
+    <script>
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+            $(".dropdown-button").dropdown();
+        });
+    </script>
+
+    <script>
+        
+    </script>
 
     <div class="container body-content">
         @RenderBody()

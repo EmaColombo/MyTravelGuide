@@ -5289,7 +5289,7 @@ button.btn-floating {
 }
 
 .dropdown-content {
-    background-color: #fff;
+    background-color: #e1f5fe;
     margin: 0;
     display: none;
     min-width: 100px;
@@ -5303,7 +5303,7 @@ button.btn-floating {
 
     .dropdown-content li {
         clear: both;
-        color: rgba(0,0,0,0.87);
+        color: #2196f3;
         cursor: pointer;
         min-height: 50px;
         line-height: 1.5rem;
@@ -5313,11 +5313,11 @@ button.btn-floating {
     }
 
         .dropdown-content li:hover, .dropdown-content li.active, .dropdown-content li.selected {
-            background-color: #eee;
+            background-color: #b9f6ca;
         }
 
             .dropdown-content li.active.selected {
-                background-color: #e1e1e1;
+                background-color: #eee;
             }
 
         .dropdown-content li.divider {
@@ -5327,7 +5327,7 @@ button.btn-floating {
 
         .dropdown-content li > a, .dropdown-content li > span {
             font-size: 16px;
-            color: #26a69a;
+            color: #2196f3;
             display: block;
             line-height: 22px;
             padding: 14px 16px;

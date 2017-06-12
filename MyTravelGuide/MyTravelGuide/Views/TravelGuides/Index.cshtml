@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RepositorioClases.TravelGuides>
+﻿@model ViewModels.TravelGuidesViewModelList
 
 @{
     ViewBag.Title = "Index";
@@ -11,38 +11,9 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TravelGuideName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdUser)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventState)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th></th>
-    </tr>
+    
 
-@foreach (var item in Model) {
+@foreach (var item in Model.List) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.TravelGuideName)
@@ -60,13 +31,7 @@
             @Html.DisplayFor(modelItem => item.IdUser)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Direccion)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventState)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreationDate)

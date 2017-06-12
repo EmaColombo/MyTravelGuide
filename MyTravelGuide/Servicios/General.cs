@@ -36,7 +36,7 @@ namespace Servicios
     /// </summary>
     public class Imagenes
     {
-        static Account account = new Account("hrr6lj3xm", "857819398585847", "R4Vf2S8YjWh9bFo-YAl1UPAkgqk");
+        static Account account = new Account("df8mszofx", "371923543578488", "7gfAv9bIrl7CR1E0GltaXrhfQJw");
         static Cloudinary cloudinary = new Cloudinary(account);
 
         /// <summary>
