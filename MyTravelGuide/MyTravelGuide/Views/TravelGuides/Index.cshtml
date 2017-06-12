@@ -1,47 +1,39 @@
 ﻿@model ViewModels.TravelGuidesViewModelList
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Your Travel Guides";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="col s12 m12 l9">
+    <div id="card-container" class="row">
+        
+            @foreach (var item in Model.List)
+            {
+                <div class="col s12 m6 l4">
+                    <div class="card medium sticky-action">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="@item.Image">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">@item.TravelGuideName<i class="material-icons right">more_vert</i></span>
+                            <div class="row card-row">
+                                <div class="col s12 m12 left-align">
+                                    <span class="card-info card-event-detail-info">@Html.DisplayFor(modelItem => item.StartDate) - @Html.DisplayFor(modelItem => item.EndDate)  <i class="fa fa-calendar-times-o"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a href="~/TravelGuides/Details/@item.TravelGuideId">Details</a>
+                            <a href="~/TravelGuides/Details/@item.TravelGuideId">Details</a>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">@item.TravelGuideName<i class="material-icons right">close</i></span>
+                            <p>@item.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    
-
-@foreach (var item in Model.List) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TravelGuideName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdUser)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TravelGuideId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TravelGuideId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TravelGuideId })
-        </td>
-    </tr>
-}
-
-</table>

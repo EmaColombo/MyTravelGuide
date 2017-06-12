@@ -4782,7 +4782,7 @@ small {
         }
 
         .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-            color: #ffab40;
+            color: #29b6f6;
             margin-right: 24px;
             transition: color .3s ease;
             text-transform: uppercase;
@@ -5313,7 +5313,7 @@ button.btn-floating {
     }
 
         .dropdown-content li:hover, .dropdown-content li.active, .dropdown-content li.selected {
-            background-color: #b9f6ca;
+            background-color: #e1f5fe;
         }
 
             .dropdown-content li.active.selected {

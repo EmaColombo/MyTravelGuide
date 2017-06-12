@@ -33,6 +33,7 @@ namespace Servicios
                 if (result.Status == "OK")
                 {
                     uriimage = result.Uri;
+                    travelg.Image = uriimage;
                 }
 
                 File.Delete(savedFileName);

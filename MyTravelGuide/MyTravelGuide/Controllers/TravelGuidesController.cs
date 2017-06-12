@@ -16,6 +16,7 @@ using Servicios;
 using ViewModels;
 using static ViewModels.ExtraModels;
 using WebMatrix.WebData;
+using MyTravelGuide.Filters;
 
 namespace MyTravelGuide.Controllers
 {
@@ -85,6 +86,7 @@ namespace MyTravelGuide.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
+        [MyAuthorize]
         public ActionResult Create(TravelGuideModel TravelGuideModel, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
