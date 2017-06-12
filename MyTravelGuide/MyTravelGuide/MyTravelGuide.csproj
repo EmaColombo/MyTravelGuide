@@ -161,6 +161,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\ControllersHelper\EventsHelpers.cs" />
     <Compile Include="Controllers\ControllersHelper\HtmlHelper.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -316,6 +317,12 @@
     <Content Include="Views\TravelGuides\Details.cshtml" />
     <Content Include="Views\TravelGuides\Edit.cshtml" />
     <Content Include="Views\TravelGuides\Index.cshtml" />
+    <Content Include="Views\Cities\Create.cshtml" />
+    <Content Include="Views\Cities\Delete.cshtml" />
+    <Content Include="Views\Cities\Details.cshtml" />
+    <Content Include="Views\Cities\Edit.cshtml" />
+    <Content Include="Views\Cities\Index.cshtml" />
+    <Content Include="Views\Cities\Geocodification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

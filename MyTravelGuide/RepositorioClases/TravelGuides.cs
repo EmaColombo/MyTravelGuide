@@ -47,5 +47,8 @@ namespace RepositorioClases
         public int CountryId { get; set; }
 
         public States.TravelGuideState State { get; set; }
+
+        [ForeignKey("Id")]
+        public virtual List<Cities> Cities { get; set; }
     }
 }

@@ -51,6 +51,7 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cities.cs" />
     <Compile Include="Countries.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="Migrations\201706081444396_ChangingDataTipeCountries.cs" />
@@ -60,6 +61,10 @@
     <Compile Include="Migrations\201706091735592_travelguidestate.cs" />
     <Compile Include="Migrations\201706091735592_travelguidestate.Designer.cs">
       <DependentUpon>201706091735592_travelguidestate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706121734288_CratingCitiesClass.cs" />
+    <Compile Include="Migrations\201706121734288_CratingCitiesClass.Designer.cs">
+      <DependentUpon>201706121734288_CratingCitiesClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelo.cs" />
@@ -78,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706091735592_travelguidestate.resx">
       <DependentUpon>201706091735592_travelguidestate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706121734288_CratingCitiesClass.resx">
+      <DependentUpon>201706121734288_CratingCitiesClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

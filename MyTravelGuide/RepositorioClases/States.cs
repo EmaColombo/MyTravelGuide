@@ -32,5 +32,13 @@ namespace RepositorioClases
             Eliminado = 2,
             Realizado = 3
         }
+
+        public enum CityType
+        {
+            Origin = 1,
+            Intermediate = 2,
+            Destiny = 3,
+            Evaluate = 4
+        }
     }
 }
