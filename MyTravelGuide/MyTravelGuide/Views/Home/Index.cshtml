@@ -11,7 +11,6 @@
         <br><br>
         <h1 class="header center green-text">Bienvenidos</h1>
         <div class="row center">
-            <h5 class="header col s12 light">¡Aquí podrás encontrar los eventos más cercanos a ti!</h5>
         </div>
     </div>
 </div>
@@ -21,9 +20,42 @@
     </div>
 </div>
 
-<div id="comentariosDiv">
+@*<div id="comentariosDiv">
     @Html.Action("Geocoder", "Cities")
+</div>*@
+
+<a class="waves-effect waves-light btn" href="#modal1">Modal</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div id="modalcontent"class="modal-content" >
+        @Html.Action("Geocoder", "Cities")
+    </div>
 </div>
 
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+
+        $('.modal').modal({
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5, // Opacity of modal background
+            inDuration: 300, // Transition in duration
+            outDuration: 200, // Transition out duration
+            startingTop: '4%', // Starting top style attribute
+            endingTop: '10%', // Ending top style attribute
+            ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                google.maps.event.trigger(map, 'resize');
+                map.setCenter({ lat: 38.897725, lng: -77.032421 });
+            },
+            complete: function () { } // Callback for Modal close
+        }
+        );
+    });
+
+
+</script>
+

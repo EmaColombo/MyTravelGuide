@@ -132,7 +132,7 @@ namespace MyTravelGuide.Controllers
         [HttpGet]
         public ActionResult Geocoder()
         {
-            return PartialView(@"~/Views/Cities/Geocodification.cshtml");
+             return PartialView(@"~/Views/Cities/Geocodification.cshtml");
         }
     }
 }
