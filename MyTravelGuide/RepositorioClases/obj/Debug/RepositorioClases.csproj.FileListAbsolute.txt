@@ -22,12 +22,9 @@ E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\EntityFramework.dll
 E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\EntityFramework.SqlServer.dll
 E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\EntityFramework.xml
 E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\EntityFramework.SqlServer.xml
-E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.csprojResolveAssemblyReference.cache
 E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.dll
 E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.pdb
 E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\Newtonsoft.Json.dll
 E:\GitHub\MyTravelGuide\RepositorioClases\bin\Debug\Newtonsoft.Json.xml
-E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.Migrations.ChangingDataTipeCountries.resources
+E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.Migrations.initial.resources
 E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.csproj.GenerateResource.Cache
-E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.Migrations.travelguidestate.resources
-E:\GitHub\MyTravelGuide\RepositorioClases\obj\Debug\RepositorioClases.Migrations.CratingCitiesClass.resources

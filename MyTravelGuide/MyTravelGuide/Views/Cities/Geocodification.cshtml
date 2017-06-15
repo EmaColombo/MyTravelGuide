@@ -1,15 +1,61 @@
-﻿
-<div class="row">
-    <div class="input-field col s6">
-        <label for="address">Address</label>
-        <input placeholder="Address" id="address" type="text" class="validate" value="Washington DC, United States">
-    </div>
-    <div class="input-field col s6">
-        <input type="submit" value="Search" class="btn btn-primary #29b6f6 light-blue lighten-1" id="submit" />
-    </div>
-</div>
+﻿@model RepositorioClases.Cities
+
+@using (Html.BeginForm("Create", "Cities", FormMethod.Post, new { id = "geocodificationform" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div id="content">
+        <div class="row">
+            <div class="input-field col s6">
+                <label for="address">Address</label>
+                <input placeholder="Address" id="address" type="text" class="validate" value="Washington DC, United States">
+            </div>
+            <div class="input-field col s2">
+                <input value="Search" class="btn btn-primary #29b6f6 light-blue lighten-1" id="submit" />
+            </div>
+        </div>
 
         <div id="map" style="width:100%;height:400px;"></div>
+
+        <div class="input-field">
+            @Html.HiddenFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control", @data_length = "200", id = "CityName" } })
+            @Html.ValidationMessageFor(model => model.CityName, "", new { @class = "validate" })
+        </div>
+
+
+        <div class="input-field">
+            @Html.HiddenFor(model => model.lat, new { htmlAttributes = new { @class = "form-control", id = "lat" } })
+            @Html.ValidationMessageFor(model => model.lat, "", new { @class = "validate" })
+        </div>
+
+        <div class="input-field">
+            @Html.HiddenFor(model => model.lng, new { htmlAttributes = new { @class = "form-control", id = "lat" } })
+            @Html.ValidationMessageFor(model => model.lng, "", new { @class = "validate" })
+        </div>
+
+        <input type="hidden" value="@Html.AttributeEncode(Model.PlaceId)" id="placeid" name="placeid" />
+
+        <div class="input-field">
+            @Html.HiddenFor(model => model.TravelGuideId, new { htmlAttributes = new { @class = "form-control", id = "travelguideid" } })
+            @Html.ValidationMessageFor(model => model.TravelGuideId, "", new { @class = "validate" })
+        </div>
+
+        <div class="input-field">
+            @Html.HiddenFor(model => model.CityType, new { htmlAttributes = new { @class = "form-control", id = "citytype" } })
+            @Html.ValidationMessageFor(model => model.CityType, "", new { @class = "validate" })
+        </div>
+
+        <div class="form-group right-align">
+            <div class="col-md-offset-2 col-md-10 align-center">
+                <input type="submit" value="Add" class="btn btn-primary #29b6f6 light-blue lighten-1" />
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
         <script>
             function initMap() {
                 var map = new google.maps.Map(document.getElementById('map'), {
@@ -17,6 +63,7 @@
                     center: { lat: 38.897725, lng: -77.032421 }
                 });
                 var geocoder = new google.maps.Geocoder();
+
 
                 document.getElementById('submit').addEventListener('click', function () {
                     geocodeAddress(geocoder, map);
@@ -32,14 +79,17 @@
                             map: resultsMap,
                             position: results[0].geometry.location
                         });
-                        $('#address').val(results[0].address_components[0].long_name);
+                        $('#CityName').val(results[0].address_components[0].long_name);
+                        $('#lat').val(results[0].geometry.location.lat);
+                        $('#lng').val(results[0].geometry.location.lng);
+                        debugger;
+                        $('#placeid').val(results[0].place_id);
+                        $('#travelguideid').val(@Model.TravelGuideId);
                     } else {
                         alert('Geocode was not successful for the following reason: ' + status);
                     }
                 });
             }
-
-            
 
         </script>
         <script async defer

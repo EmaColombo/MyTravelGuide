@@ -7,70 +7,55 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>TravelGuides</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TravelGuideName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TravelGuideName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdUser)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdUser)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
-
-    </dl>
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h1 class="header center light-blue-text">Resumen</h1>
+        <div class="row center">
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TravelGuideId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h1 class="header center light-blue-text">Observaciones</h1>
+        <div class="row center">
+        </div>
+    </div>
+</div>
+
+
+
+<a class="btn btn-primary #29b6f6 light-blue lighten-1" href="#modal1">Add City</a>
+
+<div id="modal1" class="modal">
+    <div id="modalcontent" class="modal-content">
+        @Html.Action("Geocoder", "Cities", new { cityType = RepositorioClases.States.CityType.Origin, travelguideid = Model.TravelGuideId })
+    </div>
+</div>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $('.modal').modal({
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5, // Opacity of modal background
+            inDuration: 300, // Transition in duration
+            outDuration: 200, // Transition out duration
+            startingTop: '4%', // Starting top style attribute
+            endingTop: '10%', // Ending top style attribute
+            ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                google.maps.event.trigger(map, 'resize');
+            },
+            complete: function () { } // Callback for Modal close
+        }
+        );
+    });
+
+</script>

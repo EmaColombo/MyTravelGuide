@@ -99,6 +99,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitiesServices.cs" />
     <Compile Include="EventsService.cs" />
     <Compile Include="ExtraServices.cs" />
     <Compile Include="General.cs" />

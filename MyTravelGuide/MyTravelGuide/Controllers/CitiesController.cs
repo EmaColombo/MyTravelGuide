@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RepositorioClases;
+using Servicios;
+using WebMatrix.WebData;
+using MyTravelGuide.Filters;
 
 namespace MyTravelGuide.Controllers
 {
@@ -17,8 +20,8 @@ namespace MyTravelGuide.Controllers
         // GET: Cities
         public ActionResult Index()
         {
-            var cities = db.Cities.Include(c => c.TravelGuide);
-            return View(cities.ToList());
+            
+            return View();
         }
 
         // GET: Cities/Details/5
@@ -48,17 +51,18 @@ namespace MyTravelGuide.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CityName,lat,lng,Descripcion,IdUser,CreationDate,CountryId,TravelGuideId,CityType")] Cities cities)
+        [MyAuthorize]
+        public ActionResult Create(Cities cities)
         {
             if (ModelState.IsValid)
             {
-                db.Cities.Add(cities);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                cities.IdUser = WebSecurity.CurrentUserId;
+                cities.CreationDate = DateTime.Now;
+                CitiesServices.AddCity(cities);
+                
             }
 
-            ViewBag.Id = new SelectList(db.TravelGuides, "TravelGuideId", "TravelGuideName", cities.Id);
-            return View(cities);
+            return RedirectToAction("Details", "TravelGuides", cities.TravelGuideId);
         }
 
         // GET: Cities/Edit/5
@@ -130,9 +134,9 @@ namespace MyTravelGuide.Controllers
         }
 
         [HttpGet]
-        public ActionResult Geocoder()
+        public ActionResult Geocoder(States.CityType cityType, long travelguideid)
         {
-             return PartialView(@"~/Views/Cities/Geocodification.cshtml");
+             return PartialView(@"~/Views/Cities/Geocodification.cshtml", new Cities() { CityType = cityType, TravelGuideId = travelguideid});
         }
     }
 }

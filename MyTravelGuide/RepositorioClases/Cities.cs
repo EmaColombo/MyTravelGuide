@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace RepositorioClases
     public class Cities
     {
         [Required]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         [Required]
@@ -25,9 +27,6 @@ namespace RepositorioClases
         [StringLength(50)]
         public string lng { get; set; }
 
-        [Required]
-        [StringLength(500)]
-        public string Descripcion { get; set; }
 
         [Required]
         [Display(Name = "User")]
@@ -36,12 +35,13 @@ namespace RepositorioClases
         [Required]
         public DateTime CreationDate { get; set; }
 
-        public int CountryId { get; set; }
-
         public long TravelGuideId { get; set; }
 
-        public TravelGuides TravelGuide { get; set; }
+        [ForeignKey("TravelGuideId")]
+        public virtual TravelGuides TravelGuide { get; set; }
 
         public States.CityType CityType { get; set; }
+
+        public string PlaceId { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace RepositorioClases
         public virtual DbSet<Countries> Countries { get; set; }
         public virtual DbSet<Cities> Cities { get; set; }
 
+
         protected override void OnModelCreating(DbModelBuilder builder)
         {
 
