@@ -30,7 +30,7 @@ namespace RepositorioClases
 
         [Required]
         [Display(Name = "User")]
-        public int IdUser { get; set; }
+        public long IdUser { get; set; }
 
         [Required]
         public DateTime CreationDate { get; set; }
@@ -43,5 +43,21 @@ namespace RepositorioClases
         public States.CityType CityType { get; set; }
 
         public string PlaceId { get; set; }
+
+        public virtual List<ImagesCities> Images { get; set; }
+    }
+
+    public class ImagesCities
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
+
+        [Required]
+        public long CityId { get; set; }
+
+        public virtual Cities City { get; set; }
+
+        [Required]
+        public string RutaImagen { get; set; }
     }
 }

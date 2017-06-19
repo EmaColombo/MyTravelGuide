@@ -25,7 +25,7 @@ namespace RepositorioClases
         public virtual DbSet<TravelGuides> TravelGuides { get; set; }
         public virtual DbSet<Countries> Countries { get; set; }
         public virtual DbSet<Cities> Cities { get; set; }
-
+        public virtual DbSet<ImagesCities> ImagesCities { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {

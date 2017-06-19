@@ -54,9 +54,13 @@
     <Compile Include="Cities.cs" />
     <Compile Include="Countries.cs" />
     <Compile Include="Events.cs" />
-    <Compile Include="Migrations\201706141748125_initial.cs" />
-    <Compile Include="Migrations\201706141748125_initial.Designer.cs">
-      <DependentUpon>201706141748125_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201706161345371_ImagesCities.cs" />
+    <Compile Include="Migrations\201706161345371_ImagesCities.Designer.cs">
+      <DependentUpon>201706161345371_ImagesCities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706161529354_ImagesCitiesChangingValidation.cs" />
+    <Compile Include="Migrations\201706161529354_ImagesCitiesChangingValidation.Designer.cs">
+      <DependentUpon>201706161529354_ImagesCitiesChangingValidation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelo.cs" />
@@ -70,8 +74,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706141748125_initial.resx">
-      <DependentUpon>201706141748125_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706161345371_ImagesCities.resx">
+      <DependentUpon>201706161345371_ImagesCities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706161529354_ImagesCitiesChangingValidation.resx">
+      <DependentUpon>201706161529354_ImagesCitiesChangingValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

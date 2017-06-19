@@ -5,34 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
 
-<div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-        <br><br>
-        <h1 class="header center light-blue-text">Resumen</h1>
-        <div class="row center">
-        </div>
-    </div>
+
+
+<div class="parallax-container">
+    <div class="parallax"><img src="@Model.Image"></div>
 </div>
+<div class="section white">
+    <div class="row container">
+        <h2 class="header">Cities</h2>
+        <p class="grey-text text-darken-3 lighten-3">Put the cities here</p>
 
-<div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-        <br><br>
-        <h1 class="header center light-blue-text">Observaciones</h1>
-        <div class="row center">
-        </div>
-    </div>
-</div>
-
-
-
-<a class="btn btn-primary #29b6f6 light-blue lighten-1" href="#modal1">Add City</a>
-
-<div id="modal1" class="modal">
-    <div id="modalcontent" class="modal-content">
-        @Html.Action("Geocoder", "Cities", new { cityType = RepositorioClases.States.CityType.Origin, travelguideid = Model.TravelGuideId })
+        <a class="btn btn-primary #29b6f6 light-blue lighten-1" href="">Add City</a>
     </div>
 </div>
 
@@ -56,6 +41,13 @@
             complete: function () { } // Callback for Modal close
         }
         );
+    });
+
+</script>*@
+<script>
+    $(".button-collapse").sideNav();
+    $(document).ready(function () {
+        $('.parallax').parallax();
     });
 
 </script>

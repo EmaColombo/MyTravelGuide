@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitiesModel.cs" />
     <Compile Include="EventViewModel.cs" />
     <Compile Include="ExtraModels.cs" />
     <Compile Include="FullSearchModel.cs" />

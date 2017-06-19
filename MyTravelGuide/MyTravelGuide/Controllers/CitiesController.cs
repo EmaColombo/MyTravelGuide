@@ -10,6 +10,8 @@ using RepositorioClases;
 using Servicios;
 using WebMatrix.WebData;
 using MyTravelGuide.Filters;
+using System.IO;
+
 
 namespace MyTravelGuide.Controllers
 {
@@ -25,18 +27,12 @@ namespace MyTravelGuide.Controllers
         }
 
         // GET: Cities/Details/5
-        public ActionResult Details(long? id)
+        public ActionResult Details(long id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cities cities = db.Cities.Find(id);
-            if (cities == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cities);
+            ViewModels.CitiesModel model = new ViewModels.CitiesModel();
+            model.City = CitiesServices.GetCityById(id);
+            model.Images = CitiesServices.GetImagesByCityId(id);
+            return View(model);
         }
 
         // GET: Cities/Create
@@ -137,6 +133,22 @@ namespace MyTravelGuide.Controllers
         public ActionResult Geocoder(States.CityType cityType, long travelguideid)
         {
              return PartialView(@"~/Views/Cities/Geocodification.cshtml", new Cities() { CityType = cityType, TravelGuideId = travelguideid});
+        }
+
+        [HttpPost]
+        public ActionResult AddImageBD(HttpPostedFileBase file, long CityId)
+        {
+            CitiesServices.AddCityImage(CityId, file);
+            return RedirectToAction("AddImage", "Cities", new {CityId = CityId });
+        }
+
+        //[HttpGet]
+        public ActionResult AddImage(long? CityId)
+        {
+            ViewModels.ImagesCitiesModel model = new ViewModels.ImagesCitiesModel();
+            model.City = CitiesServices.GetCityById((long)CityId);
+            model.Images = CitiesServices.GetImagesByCityId((long)CityId);
+            return PartialView(@"~/Views/Cities/AddImagesCities.cshtml", model);
         }
     }
 }
