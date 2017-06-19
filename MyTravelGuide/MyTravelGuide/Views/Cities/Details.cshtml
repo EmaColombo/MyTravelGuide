@@ -62,12 +62,15 @@
 
 <script>
     $(document).on("submit", "#imagesForm", function (e) {
+
         var id = $("#CityId").val();
         var files = $("#file").get(0).files;
         e.preventDefault();
         var data = new FormData();
         data.append("CityId", id);
         data.append("file", files[0]);
+        var html = "<div class='col s12 m12 center-align'><i class='fa fa-spinner fa-pulse fa-5x fa-fw center-align'></i><span class='sr-only'>Loading...</span></div>";
+        $("#ImagesDiv").html(html);
         $.ajax({
             url: "/Cities/AddImageBD",
             type: "POST",
