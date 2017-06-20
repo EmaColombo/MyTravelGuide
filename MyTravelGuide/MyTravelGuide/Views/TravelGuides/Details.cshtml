@@ -27,20 +27,14 @@
                 </div>
             </div>
             <div class="card-action">
-                <a href="#citiesModal>Go to Cities</a>
+                <a href="#citiesModal">Go to Cities</a>
             </div>
         </div>
     </div>
 </div>
 
 <div id="citiesModal" class="modal">
-    <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
+    @Html.Action("CitiesList", "Cities", new {travelguideid = Model.TravelGuideId })
 </div>
 
 
@@ -57,7 +51,7 @@
             startingTop: '4%', // Starting top style attribute
             endingTop: '10%', // Ending top style attribute
             ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-                google.maps.event.trigger(map, 'resize');
+                //google.maps.event.trigger(map, 'resize');
             },
             complete: function () { } // Callback for Modal close
         }

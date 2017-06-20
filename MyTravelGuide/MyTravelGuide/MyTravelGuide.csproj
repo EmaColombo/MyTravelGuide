@@ -325,6 +325,7 @@
     <Content Include="Views\Cities\Index.cshtml" />
     <Content Include="Views\Cities\Geocodification.cshtml" />
     <Content Include="Views\Cities\AddImagesCities.cshtml" />
+    <Content Include="Views\Cities\CitiesList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,11 +11,18 @@ namespace ViewModels
     {
         public Cities City { get; set; }
         public List<ImagesCities> Images { get; set; }
+        public long TravelGuideId { get; set; }
     }
 
     public class ImagesCitiesModel
     {
         public Cities City { get; set; }
         public List<ImagesCities> Images { get; set; }
+    }
+
+    public class CitiesListModel
+    {
+        public List<Cities> Cities { get; set; }
+        public long TravelGuideId { get; set; }
     }
 }

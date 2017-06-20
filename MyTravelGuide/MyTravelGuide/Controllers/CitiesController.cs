@@ -136,6 +136,17 @@ namespace MyTravelGuide.Controllers
              return PartialView(@"~/Views/Cities/Geocodification.cshtml", new Cities() { CityType = cityType, TravelGuideId = travelguideid});
         }
 
+        [HttpGet]
+        public ActionResult CitiesList(long travelguideid)
+        {
+            List<Cities> Cities = CitiesServices.GetCitiesByTravelGuideId(travelguideid);
+            ViewModels.CitiesListModel model = new ViewModels.CitiesListModel();
+            model.Cities = Cities;
+            model.TravelGuideId = travelguideid;
+            
+            return PartialView(@"~/Views/Cities/CitiesList.cshtml", model);
+        }
+
         [HttpPost]
         public ActionResult AddImageBD(HttpPostedFileBase file, long CityId)
         {

@@ -1,0 +1,17 @@
+﻿@model ViewModels.CitiesListModel
+
+
+    <ul class="collection">
+        @foreach (var item in Model.Cities)
+        {
+            <li class="collection-item avatar">
+                <i class="material-icons circle light-blue">my_location</i>
+                <span class="title">@item.CityName</span>
+                <p>
+                    @item.CityType
+                </p>
+                <a href="~/Cities/Details/@item.Id" class="secondary-content"><i class="material-icons">send</i></a>
+            </li>
+        }
+    </ul>
+
