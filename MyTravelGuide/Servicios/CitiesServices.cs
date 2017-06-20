@@ -71,5 +71,13 @@ namespace Servicios
                 return context.ImagesCities.Where(c => c.CityId == CityId).ToList();
             }
         }
+
+        public static List<Cities> GetCitiesByTravelGuideId(long Id)
+        {
+            using(Modelo context = new Modelo())
+            {
+                return context.Cities.Where(c => c.TravelGuideId == Id).ToList();
+            }
+        }
     }
 }

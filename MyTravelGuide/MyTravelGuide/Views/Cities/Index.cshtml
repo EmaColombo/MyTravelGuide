@@ -13,9 +13,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TravelGuide.TravelGuideName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CityName)
         </th>
         <th>
@@ -24,17 +21,12 @@
         <th>
             @Html.DisplayNameFor(model => model.lng)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.IdUser)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CountryId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TravelGuideId)
@@ -47,9 +39,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TravelGuide.TravelGuideName)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.CityName)
         </td>
@@ -59,18 +49,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.lng)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.IdUser)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreationDate)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CountryId)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.TravelGuideId)
         </td>

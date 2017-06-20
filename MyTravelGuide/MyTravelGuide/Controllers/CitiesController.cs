@@ -20,10 +20,11 @@ namespace MyTravelGuide.Controllers
         private Modelo db = new Modelo();
 
         // GET: Cities
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(long id)
         {
-            
-            return View();
+            List<Cities> Lista = CitiesServices.GetCitiesByTravelGuideId(id);
+            return View(Lista);
         }
 
         // GET: Cities/Details/5

@@ -13,14 +13,35 @@
     <div class="parallax"><img src="@Model.Image"></div>
 </div>
 <div class="section white">
-    <div class="row container">
-        <h2 class="header">Cities</h2>
-        <p class="grey-text text-darken-3 lighten-3">Put the cities here</p>
-
-        <a class="btn btn-primary #29b6f6 light-blue lighten-1" href="">Add City</a>
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="card-panel grey lighten-5 z-depth-1">
+            <div class="row valign-wrapper">
+                <div class="col s2">
+                    <img src="~/Content/Imagenes/Cities.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                </div>
+                <div class="col s10">
+                    <h3>Cities</h3>
+                    <span class="black-text">
+                        What cities do you want to visit?
+                    </span>
+                </div>
+            </div>
+            <div class="card-action">
+                <a href="#citiesModal>Go to Cities</a>
+            </div>
+        </div>
     </div>
 </div>
 
+<div id="citiesModal" class="modal">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
 
 
 
@@ -43,7 +64,7 @@
         );
     });
 
-</script>*@
+</script>
 <script>
     $(".button-collapse").sideNav();
     $(document).ready(function () {

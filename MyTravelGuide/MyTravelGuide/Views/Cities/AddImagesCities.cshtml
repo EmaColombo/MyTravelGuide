@@ -9,21 +9,23 @@
     <div class="container">
         @if (Model.Images.Count > 0)
         {
-        <div class="carousel carousel-slider">
-            @foreach (var item in Model.Images)
-            {
-                <a class="carousel-item" href="#"><img src="@item.RutaImagen"></a>
-            }
-        </div>
+            <div class="carousel carousel-slider">
+                @foreach (var item in Model.Images)
+                {
+                    <a class="carousel-item" href="#"><img class="responsive-img" src="@item.RutaImagen"></a>
+                }
+
+            </div>
         }
         else
         {
             <br />
             <h2>Add images</h2>
         }
+        <hr />
     </div>
 
-<hr />
+
 
 <div class="row">
     <div>
