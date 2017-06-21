@@ -11,7 +11,7 @@ using Servicios;
 using WebMatrix.WebData;
 using MyTravelGuide.Filters;
 using System.IO;
-
+using ViewModels;
 
 namespace MyTravelGuide.Controllers
 {
@@ -23,8 +23,11 @@ namespace MyTravelGuide.Controllers
         [HttpGet]
         public ActionResult Index(long id)
         {
+            CitiesListModel model = new CitiesListModel();
+            model.TravelGuideId = id;
             List<Cities> Lista = CitiesServices.GetCitiesByTravelGuideId(id);
-            return View(Lista);
+            model.Cities = Lista;
+            return View(model);
         }
 
         // GET: Cities/Details/5
@@ -131,9 +134,9 @@ namespace MyTravelGuide.Controllers
         }
 
         [HttpGet]
-        public ActionResult Geocoder(States.CityType cityType, long travelguideid)
+        public ActionResult Geocoder(long travelguideid)
         {
-             return PartialView(@"~/Views/Cities/Geocodification.cshtml", new Cities() { CityType = cityType, TravelGuideId = travelguideid});
+             return PartialView(@"~/Views/Cities/Geocodification.cshtml", new Cities() { TravelGuideId = travelguideid, CityType = States.CityType.Intermediate});
         }
 
         [HttpGet]
